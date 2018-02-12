@@ -13,7 +13,7 @@ after_success:
   - ssh-add id_rsa
   # hack travis-ci.org
   # commit HTMLs in site/ to the master branch and push to GitHub using SSH
-  - ./node_modules/gp-pages/bin/gh-pages -d site/ -b master -r git@github.com:${TRAVIS_REPO_SLUG}.git
+  - ~/node_modules/gp-pages/bin/gh-pages -d site/ -b master -r git@github.com:${TRAVIS_REPO_SLUG}.git
 
 # !!! GitHub Pages support is experimental !!! missing github_token
 #deploy:
