@@ -1,0 +1,44 @@
+site_name: 'OpenWrt.io'
+site_url: 'https://openwrt.io/'
+pages:
+- 首页: 'index.md'
+- Openwrt文档:
+    - '新手指南': 'docs/beginners-guide.md'
+    - '支持的硬件': 'docs/supported-devices.md'
+    - '开发者指南': 'docs/developer-guide.md'
+    - 'opkg软件源': 'docs/opkg.md'
+    - '编译package': 'docs/build-a-single-package.md'
+    - '智能VPN': 'docs/smart-vpn.md'
+    - '刷机': 'docs/flashing.md'
+    - '搭建opkg软件仓库': 'docs/create-opkg-package-repository.md'
+    - '编译固件': 'docs/build-firmware.md'
+    - '开发package': 'docs/create-package.md'
+    - 'docker编译package': 'docs/build-openwrt-package-using-docker.md'
+    - 'docker CI搭建opkg源': 'docs/create-opkg-package-repository-using-docker-ci.md'
+- 云插件:
+    - '开发极路由云插件': 'docs/create-gee-app.md'
+- 厂商:
+    - '极路由': 'docs/gee.md'
+    - '优酷路由宝': 'docs/youku.md'
+    - '小米路由': 'docs/miwifi.md'
+    - '魔豆': 'docs/modou.md'
+    - '网件': 'docs/netgear.md'
+- 关于我们: 'about.md'
+theme: 'mkdocs'
+repo_url: 'http://dl.openwrt.io/'
+repo_name: '下载'
+google_analytics: ['UA-63908544-1', 'openwrt.io']
+copyright: <a title="帮助我们：点击注册七牛，本站将获得流量供大家下载使用" href="https://portal.qiniu.com/signup?code=3lafkpsz7yes1" target="_blank"><img src="https://developer.qiniu.com/assets/qiniu-transparent-9c01479a982463fdafe1c97a0254a99140eea97dcc6891489b5752a557b0212f.png" alt="七牛云" /></a><a rel="nofollow" href="http://www.miitbeian.gov.cn/">苏ICP备15020382号-1</a>
+    <script type="text/javascript">
+        window.zhuge = window.zhuge || [];window.zhuge.methods = "_init debug identify track trackLink trackForm page".split(" ");
+        window.zhuge.factory = function(b) {return function() {var a = Array.prototype.slice.call(arguments);a.unshift(b);
+        window.zhuge.push(a);return window.zhuge;}};for (var i = 0; i < window.zhuge.methods.length; i++) {
+        var key = window.zhuge.methods[i];window.zhuge[key] = window.zhuge.factory(key);}window.zhuge.load = function(b, x) {
+        if (!document.getElementById("zhuge-js")) {var a = document.createElement("script");var verDate = new Date();
+        var verStr = verDate.getFullYear().toString()+ verDate.getMonth().toString() + verDate.getDate().toString();
+        a.type = "text/javascript";a.id = "zhuge-js";a.async = !0;
+        a.src = "//zgsdk.zhugeio.com/zhuge.min.js?v=" + verStr;
+        a.onerror = function(){window.zhuge.identify = window.zhuge.track = function(ename, props, callback){if(callback && Object.prototype.toString.call(callback) === '[object Function]')callback();};};
+        var c = document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a, c);window.zhuge._init(b, x)}};
+        window.zhuge.load('f6a2e8eed9e447ea89a63b87763ec7df');//配置应用的AppKey
+    </script>
