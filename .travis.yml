@@ -1,8 +1,9 @@
-language: python
+language: node_js
 before_install:
   - openssl aes-256-cbc -K $encrypted_62f3167d5387_key -iv $encrypted_62f3167d5387_iv -in id_rsa.enc -out id_rsa -d
 install:
   - pip install mkdocs
+  - npm install gh-pages
 script:
   - mkdocs build --clean
 after_success:
@@ -10,10 +11,15 @@ after_success:
   - eval "$(ssh-agent)"
   - chmod 600 id_rsa
   - ssh-add id_rsa
-deploy:
-  provider: pages
-  skip-cleanup: true
-  on:
-    branch: mkdocs
-  local-dir: site
-  target-branch: master
+  # hack travis-ci.org
+  # commit HTMLs in site/ to the master branch and push to GitHub using SSH
+  ./node_modules/gp-pages/bin/gh-pages -d site/ -b master -r git@github.com:${TRAVIS_REPO_SLUG}.git
+
+# !!! GitHub Pages support is experimental !!! missing github_token
+#deploy:
+#  provider: pages
+#  skip-cleanup: true
+#  on:
+#    branch: mkdocs
+#  local-dir: site
+#  target-branch: master
