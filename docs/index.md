@@ -6,9 +6,25 @@ OpenWrt是一款基于Linux的操作系统，主要用于路由器。…… \> [
 
 ## Openwrt News 开源项目动态
 
+### 2018年1月，OpenWrt 和 LEDE 合并
+
+合并后的项目名称仍然为 OpenWrt，而使用LEDE项目代码，根据[LEDE制定的规范](https://openwrt.org/rules)进行管理，抛弃OpenWrt代码，OpenWrt CC 15.05将获得有限的安全性和错误修复，而更旧的版本不再维护。
+
+LEDE官网 [lede-project.org](https://lede-project.org/) 已跳转至 [openwrt.org](https://openwrt.org/)。
+
+### 2017年10月，LEDE 17.01.4 发布
+
+[https://downloads.openwrt.org/releases/17.01.4/](https://downloads.openwrt.org/releases/17.01.4/)
+
+ * Linux内核更新至4.4.92（v17.01.3中为4.4.89）
+ * 安全修复了brcmfmac，hostapd，mac80211，toolchain/gdb和Linux内核
+ * 介绍最新版本的Wireguard VPN软件（0.0.20171017）
+ * 修复x86/generic子目标中的Xen支持，在x86/64子目标中添加Xen支持
+ * 针对ar71xx，bcm53xx，ramips和x86各种平台的修复
+
 ### 2016年3月，OpenWrt Chaos Calmer 15.05.1 正式版发布
 
-[http://downloads.openwrt.io/chaos\_calmer/15.05.1/](http://downloads.openwrt.io/chaos\_calmer/15.05.1/)
+[https://archive.openwrt.org/chaos\_calmer/15.05.1/](http://archive.openwrt.org/chaos_calmer/15.05.1/)
 
  * Linux kernel updated to version 3.18
  * Support for new devices:
@@ -24,7 +40,7 @@ OpenWrt是一款基于Linux的操作系统，主要用于路由器。…… \> [
 
 ### 2015年9月，OpenWrt Chaos Calmer 15.05 正式版发布
 
-[http://downloads.openwrt.io/chaos\_calmer/15.05/](http://downloads.openwrt.io/chaos\_calmer/15.05/)
+[https://archive.openwrt.org/chaos\_calmer/15.05/](https://archive.openwrt.org/chaos_calmer/15.05/)
 
  * Linux kernel updated to version 3.18
  * Improved Security Features
