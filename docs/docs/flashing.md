@@ -4,7 +4,7 @@
 
 ## 下载OpenWrt开源固件
 
-极路由的OpenWrt固件在这里下载：[github.com](https://github.com/rssnsj/openwrt-hc5x61/releases) 或 [本站镜像](http://downloads.openwrt.io/barrier_breaker/14.07/ramips/mt7620a/)，极2的型号为HC5761，所以下载`openwrt-ramips-mt7620a-hiwifi-hc5761-squashfs-sysupgrade.bin`即可。
+极路由的OpenWrt固件在这里下载：[github.com](https://github.com/rssnsj/openwrt-hc5x61/releases)，极2的型号为HC5761，所以下载`openwrt-ramips-mt7620a-hiwifi-hc5761-squashfs-sysupgrade.bin`即可。
 
 ## 路由器刷入OpenWrt
 
@@ -13,7 +13,7 @@
 ```
 ssh root@192.168.199.1
 cd /tmp
-wget http://downloads.openwrt.io/barrier_breaker/14.07/ramips/mt7620a/openwrt-ramips-mt7620a-hiwifi-hc5761-squashfs-sysupgrade.bin
+wget https://archive.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/openwrt-ramips-mt7620a-hiwifi-hc5761-squashfs-sysupgrade.bin
 sysupgrade -F -n openwrt-ramips-mt7620a-hiwifi-hc5761-squashfs-sysupgrade.bin
 ```
 

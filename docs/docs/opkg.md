@@ -101,13 +101,7 @@ opkg install easycwmp
 官方源：
 
 ```
-src/gz openwrt_packages http://downloads.openwrt.org/chaos_calmer/15.05.1/ramips/mt7620/packages/packages
-```
-
-本站对官方源做了国内镜像CDN加速：
-
-```
-src/gz openwrt_packages http://downloads.openwrt.io/chaos_calmer/15.05.1/ramips/mt7620/packages/packages
+src/gz openwrt_packages https://archive.openwrt.org/chaos_calmer/15.05.1/ramips/mt7620/packages/packages
 ```
 
 ### 极路由gee ralink opkg 源（j1s、 j2、 j3）

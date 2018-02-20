@@ -5,7 +5,7 @@
 下载openwrt固件：
 
 ```
-wget http://downloads.openwrt.io/barrier_breaker/14.07/ar71xx/nand/openwrt-ar71xx-nand-wndr3700v4-ubi-factory.img -O firmware.img
+wget https://archive.openwrt.org/barrier_breaker/14.07/ar71xx/nand/openwrt-ar71xx-nand-wndr3700v4-ubi-factory.img -O firmware.img
 ```
 
 关机状态下，按住reset，开机，等待绿灯闪烁时，松开reset。把电脑设置成静态IP：192.168.1.x，然后把固件上传到路由器中，指令如下：
