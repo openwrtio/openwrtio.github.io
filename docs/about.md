@@ -1,13 +1,13 @@
 
 ## 技术细节
 
-1. 本站完全开源，放在github.com上，大家共同修改，通过travis-ci.org持续集成自动构建部署到七牛云上，无需服务器。
+1. 本站完全开源，放在github.com上，大家共同修改，通过travis-ci.org持续集成自动构建部署到Github Pages，无需服务器。
 2. 网站内容采用markdown，通过mkdocs生成HTML，是一个纯静态的网站。
-3. 为提高国内下载速度，OpenWrt Downloads和opkg软件源等文件放在七牛云上。
+3. 为提高国内下载速度，Downloads和opkg软件源等文件放在七牛云上。
 
 ## 为开源做贡献
 
- * 加入开源项目 [https://github.com/openwrtio/portal](https://github.com/openwrtio/portal)，一起写代码吧。
+ * 加入开源项目 [https://github.com/openwrtio](https://github.com/openwrtio)，一起写代码吧。
  * 通过本站邀请链接注册[七牛云](https://portal.qiniu.com/signup?code=3lafkpsz7yes1)，本站将获得5GB/人的流量奖励，供大家下载使用。
 
 ## 感谢
