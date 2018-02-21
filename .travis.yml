@@ -15,6 +15,7 @@ after_success:
   - ssh-add id_rsa
   # hack travis-ci.org
   # commit HTMLs in site/ to the master branch and push to GitHub using SSH
+  - echo ${CUSTOM_DOMAIN} > site/CNAME
   - gh-pages -d site/ -b master -r git@github.com:${TRAVIS_REPO_SLUG}.git
 
 # !!! GitHub Pages support is experimental !!! missing github_token
