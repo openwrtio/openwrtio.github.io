@@ -1,5 +1,12 @@
-# portal
+# openwrtio portal
 
-官网：https://openwrt.io/
+[![Build Status](https://travis-ci.org/openwrtio/openwrtio.github.io.svg?branch=mkdocs)](https://travis-ci.org/openwrtio/openwrtio.github.io)
+[![Powered by Cloudflare](https://www.cloudflare.com/media/images/web-badges/cf-web-badges-f-1.png)](https://www.cloudflare.com/)
 
-使用markdown书写，提交git触发travis-ci.org持续集成（使用mkdocs把markdown转换成HTML，自动发布到github pages），无需服务器。
+## tech
+
+- markdown
+- [travis-ci.org](https://travis-ci.org/openwrtio/openwrtio.github.io)
+- [MkDocs.org](http://www.mkdocs.org/)
+- [GitHub Pages](https://pages.github.com/)
+- [Cloudflare.com](https://www.cloudflare.com/)
