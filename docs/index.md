@@ -22,6 +22,14 @@ LEDE官网 [lede-project.org](https://lede-project.org/) 已跳转至 [openwrt.o
  * 修复x86/generic子目标中的Xen支持，在x86/64子目标中添加Xen支持
  * 针对ar71xx，bcm53xx，ramips和x86各种平台的修复
 
+### 2017年9月，优酷路由宝倒闭
+
+阿里巴巴收购优酷后，关闭了优酷路由器产品线，官网 [yj.youku.com](http://yj.youku.com/) 和论坛都已关闭。
+
+### 2016年5月，魔豆路由器倒闭
+
+官方论坛 [modouwifi.cn](http://modouwifi.cn/) 已关闭。
+
 ### 2016年3月，OpenWrt Chaos Calmer 15.05.1 正式版发布
 
 [https://archive.openwrt.org/chaos\_calmer/15.05.1/](http://archive.openwrt.org/chaos_calmer/15.05.1/)
