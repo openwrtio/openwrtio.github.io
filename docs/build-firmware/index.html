@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://openwrt.io/docs/build-firmware/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>编译固件 - OpenWrt.io</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-63908544-1', 'openwrt.io');
+            ga('send', 'pageview');
+        </script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">OpenWrt.io</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">首页</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Openwrt文档 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../beginners-guide/">新手指南</a>
+</li>
+                            
+<li >
+    <a href="../supported-devices/">支持的硬件</a>
+</li>
+                            
+<li >
+    <a href="../developer-guide/">开发者指南</a>
+</li>
+                            
+<li >
+    <a href="../opkg/">opkg软件源</a>
+</li>
+                            
+<li >
+    <a href="../build-a-single-package/">编译package</a>
+</li>
+                            
+<li >
+    <a href="../smart-vpn/">智能VPN</a>
+</li>
+                            
+<li >
+    <a href="../flashing/">刷机</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository/">搭建opkg软件仓库</a>
+</li>
+                            
+<li class="active">
+    <a href="./">编译固件</a>
+</li>
+                            
+<li >
+    <a href="../create-package/">开发package</a>
+</li>
+                            
+<li >
+    <a href="../build-openwrt-package-using-docker/">docker编译package</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository-using-docker-ci/">docker CI搭建opkg源</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">云插件 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../create-gee-app/">开发极路由云插件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">厂商 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../gee/">极路由</a>
+</li>
+                            
+<li >
+    <a href="../youku/">优酷路由宝</a>
+</li>
+                            
+<li >
+    <a href="../miwifi/">小米路由</a>
+</li>
+                            
+<li >
+    <a href="../modou/">魔豆</a>
+</li>
+                            
+<li >
+    <a href="../netgear/">网件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../downloads/">下载</a>
+                    </li>
+                    <li >
+                        <a href="../../about/">关于我们</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../create-opkg-package-repository/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../create-package/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/openwrtio/openwrtio.github.io/edit/mkdocs/docs/docs/build-firmware.md">Edit on Github</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#build-openwrt-firmware">编译固件 Build OpenWrt Firmware</a></li>
+            <li><a href="#_1">下载最新代码</a></li>
+            <li><a href="#_2">查看是否支持手中的路由器</a></li>
+            <li><a href="#feeds">更新可选的软件源（Feeds）</a></li>
+            <li><a href="#_3">软件配置</a></li>
+            <li><a href="#_4">编译</a></li>
+            <li><a href="#_5">刷机</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="build-openwrt-firmware">编译固件 Build OpenWrt Firmware</h1>
+<p>如果从网上下载的固件不能满足需求，那就需要自己编译了。</p>
+<p>OpenWrt系统已经发布了多个版本，如下：</p>
+<table>
+<thead>
+<tr>
+<th>发布时间</th>
+<th>版本号</th>
+<th>开发代号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2017年10月</td>
+<td>17.01.4</td>
+<td>LEDE</td>
+</tr>
+<tr>
+<td>2016年3月</td>
+<td>15.05.1</td>
+<td>Chaos Calmer</td>
+</tr>
+<tr>
+<td>2015年9月</td>
+<td>15.05</td>
+<td>Chaos Calmer</td>
+</tr>
+<tr>
+<td>2014年10月</td>
+<td>14.07</td>
+<td>Barrier Breaker</td>
+</tr>
+<tr>
+<td>2013年4月</td>
+<td>12.09</td>
+<td>Attitude Adjustment</td>
+</tr>
+</tbody>
+</table>
+<p>新的硬件支持和软件都会加入到最新版本中，所以优先使用最新版。</p>
+<h2 id="_1">下载最新代码</h2>
+<p>首先把系统代码下载下来，OpenWrt官方代码在<a href="https://github.com/openwrt/openwrt">https://github.com/openwrt/openwrt</a>，如果下载很慢，可以试试国内镜像：<a href="https://coding.net/u/openwrtio/p/openwrt/git">https://coding.net/u/openwrtio/p/openwrt/git</a>。如果以前下载过，记得时常更新。指令如下：</p>
+<pre><code>mkdir -p ~/code/openwrt/dl
+cd ~/code/openwrt/
+git clone git@github.com:openwrt/openwrt.git
+cd openwrt
+git pull origin master
+ln -s ../dl ./
+</code></pre>
+
+<h2 id="_2">查看是否支持手中的路由器</h2>
+<p>输入命令打开配置界面，搜索品牌或型号（按斜杠/，然后输入），就可以看到OpenWrt是否支持你的路由器了。可以看到已支持：极路由4（HC5962）、极路由3（HC5861）、极路由2（HC5761）、极路由1s（HC5661/HC5661A）、小米路由器mini(已停产)、WRTNode2Q、WRTNode2R、WRTNode2P。</p>
+<p>推荐使用价格低廉的 <a href="http://www.wrtnode.cc/">WRTNode2P（官网￥128）</a> 或 <a href="https://union-click.jd.com/jdc?e=0&amp;p=AyIOZRprFQITA1AaWCVGTV8LRGtMR1dGFxBFC1pXUwkEAEAdQFkJBVsVAxYCVBhETEdOWmVsW00HZ3kXbjsTAUBTC0UucWpOdx5dVxlsEQZVHUcUBA4HVQpbFwkWBF4eWCUAEwRUH1ocARs3VRtaFQYiN1Uaa0NsEgZUGloUAxoGUitcHAERBV0aWBAyEgJdE10RARAAVhtcHDIVNwZGC0dYRlEDK2slMg%3D%3D&amp;t=W1dCFFlQCxxKQgFHRE5XDVULR0UVAhMDUBpYCltXWwg%3D">极路由器1s HC5661A（京东￥89）</a> 进行开发。</p>
+<pre><code>cd openwrt
+make menuconfig
+</code></pre>
+
+<p>本文以极路由器1s HC5661A为例，它是联发科MT7628芯片，所以Target System选MediaTek Ralink MIPS，Subtarget选MT76x8 based boards，然后进入Target Profile选HiWiFi HC5661A。</p>
+<p><img alt="openwrt make menuconfig HiWiFi HC5661A" src="../../img/openwrt-make-menuconfig-hiwifi-hc5661a.png" /></p>
+<h2 id="feeds">更新可选的软件源（Feeds）</h2>
+<p>系统必须的软件是和系统代码集成在一起的，在<code>package</code>目录里，而其他可选的软件在各个订阅源里（地址在<code>feeds.conf.default</code>里），一般会需要一些，所以进行下载更新，指令如下：</p>
+<pre><code>./scripts/feeds update -a
+./scripts/feeds install -a
+</code></pre>
+
+<p><img alt="openwrt-scripts-feeds-install" src="../../img/openwrt-scripts-feeds-install.png" /></p>
+<p>可以看到，<code>feeds</code>目录中出现了很多文件，<code>package/feeds</code>里出现了很多软链接指向<code>feeds</code>。</p>
+<h2 id="_3">软件配置</h2>
+<p>然后再打开配置界面，选择需要的软件（*是集成到固件里，M是编译成ipk手动安装），然后退出保存。建议取消dnsmasq，集成dnsmasq-full。常用的软件有：</p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base system &gt; dnsmasq-full &gt; Build with IPset support.</td>
+<td>dnsmasq的IPset</td>
+</tr>
+<tr>
+<td>LuCI &gt; 1. Collections &gt; luci</td>
+<td>路由器网页管理后台</td>
+</tr>
+</tbody>
+</table>
+<pre><code>make menuconfig
+</code></pre>
+
+<p><img alt="openwrt-make-menuconfig-dnsmasq-full" src="../../img/openwrt-make-menuconfig-dnsmasq-full.png" />
+<img alt="openwrt-make-menuconfig-luci" src="../../img/openwrt-make-menuconfig-luci.png" /></p>
+<h2 id="_4">编译</h2>
+<p>使用-j参数开启多核编译，速度会加快。指令如下：</p>
+<pre><code>make tools/compile -j V=4
+make toolchain/compile V=s
+make world -j V=4
+make -j V=4 | tee build.log
+</code></pre>
+
+<p>如果报错：</p>
+<blockquote>
+<p>openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/stamp/.toolchain_install] Error 2</p>
+</blockquote>
+<p>可能是因为文件下载失败，需要排查dl目录，去网上搜索文件名，手动下载放进去，并删除<code>*.dl</code>文件。指令如下：</p>
+<pre><code>ls dl/*.dl
+rm dl/*.dl
+rm dl/*.md5sum
+</code></pre>
+
+<p>然后等待即可。快则几十分钟，慢则几个小时，视CPU性能而定。编译成功后，会在<code>bin</code>目录中生成固件，比如小米路由mini的固件是<code>openwrt-ramips-mt7620-xiaomi-miwifi-mini-squashfs-sysupgrade.bin</code>。</p>
+<p><img alt="openwrt-make-success-miwifi" src="../../img/openwrt-make-success-miwifi.png" /></p>
+<h2 id="_5">刷机</h2>
+<p>极路由刷OpenWrt命令如下：</p>
+<pre><code>scp bin/targets/ramips/mt7628/lede-ramips-mt7628-hc5661a-squashfs-sysupgrade.bin root@192.168.199.1:/tmp/
+ssh root@192.168.199.1
+mtd write /tmp/lede-ramips-mt7628-hc5661a-squashfs-sysupgrade.bin firmware
+reboot
+</code></pre>
+
+<p>小米路由开放root，按照文档开启（<a href="../miwifi-install-openwrt-firmware.png">http://miwifi.com/miwifi_open.html</a>），然后把固件scp进去，刷机。指令如下：</p>
+<pre><code>scp bin/ramips/openwrt-ramips-mt7620-xiaomi-miwifi-mini-squashfs-sysupgrade.bin root@192.168.31.1:/tmp/
+ssh root@192.168.31.1
+cat /proc/mtd
+mtd -r write /tmp/openwrt-ramips-mt7620-xiaomi-miwifi-mini-squashfs-sysupgrade.bin OS1
+</code></pre>
+
+<p><img alt="miwifi-install-openwrt-firmware" src="../../img/miwifi-install-openwrt-firmware.png" /></p>
+<p>PS：如果写入firmware报错“Could not open mtd device: firmware”和“Can't open device for writing!”，使用<code>cat /proc/mtd</code>查看闪存，改成写入OS1即可。</p>
+<p>刷机重启后，就能看到熟悉的OpenWrt路由器界面了，可以看到根目录有11M可写，可以安装各种ipk软件，拯救了小米路由的官方废柴系统，可玩性大大增加。</p>
+<p><img alt="miwifi-openwrt-web" src="../../img/miwifi-openwrt-web.png" />
+<img alt="telnet-miwifi-openwrt-cc-firmware" src="../../img/telnet-miwifi-openwrt-cc-firmware.png" /></p>
+<div id="comments" data-thread-key="docs-build-firmware"></div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a title="帮助我们：点击注册七牛，本站将获得流量供大家下载使用" href="https://portal.qiniu.com/signup?code=3lafkpsz7yes1" target="_blank"><img src="https://developer.qiniu.com/assets/qiniu-transparent-9c01479a982463fdafe1c97a0254a99140eea97dcc6891489b5752a557b0212f.png" alt="七牛云" /></a><a rel="nofollow" href="http://www.miitbeian.gov.cn/">苏ICP备15020382号-1</a> <script type="text/javascript"> window.zhuge = window.zhuge || [];window.zhuge.methods = "_init debug identify track trackLink trackForm page".split(" "); window.zhuge.factory = function(b) {return function() {var a = Array.prototype.slice.call(arguments);a.unshift(b); window.zhuge.push(a);return window.zhuge;}};for (var i = 0; i < window.zhuge.methods.length; i++) { var key = window.zhuge.methods[i];window.zhuge[key] = window.zhuge.factory(key);}window.zhuge.load = function(b, x) { if (!document.getElementById("zhuge-js")) {var a = document.createElement("script");var verDate = new Date(); var verStr = verDate.getFullYear().toString()+ verDate.getMonth().toString() + verDate.getDate().toString(); a.type = "text/javascript";a.id = "zhuge-js";a.async = !0; a.src = "//zgsdk.zhugeio.com/zhuge.min.js?v=" + verStr; a.onerror = function(){window.zhuge.identify = window.zhuge.track = function(ename, props, callback){if(callback && Object.prototype.toString.call(callback) === '[object Function]')callback();};}; var c = document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a, c);window.zhuge._init(b, x)}}; window.zhuge.load('f6a2e8eed9e447ea89a63b87763ec7df');//配置应用的AppKey </script></p>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

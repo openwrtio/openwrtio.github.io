@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://openwrt.io/docs/netgear/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>网件 - OpenWrt.io</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-63908544-1', 'openwrt.io');
+            ga('send', 'pageview');
+        </script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">OpenWrt.io</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">首页</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Openwrt文档 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../beginners-guide/">新手指南</a>
+</li>
+                            
+<li >
+    <a href="../supported-devices/">支持的硬件</a>
+</li>
+                            
+<li >
+    <a href="../developer-guide/">开发者指南</a>
+</li>
+                            
+<li >
+    <a href="../opkg/">opkg软件源</a>
+</li>
+                            
+<li >
+    <a href="../build-a-single-package/">编译package</a>
+</li>
+                            
+<li >
+    <a href="../smart-vpn/">智能VPN</a>
+</li>
+                            
+<li >
+    <a href="../flashing/">刷机</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository/">搭建opkg软件仓库</a>
+</li>
+                            
+<li >
+    <a href="../build-firmware/">编译固件</a>
+</li>
+                            
+<li >
+    <a href="../create-package/">开发package</a>
+</li>
+                            
+<li >
+    <a href="../build-openwrt-package-using-docker/">docker编译package</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository-using-docker-ci/">docker CI搭建opkg源</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">云插件 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../create-gee-app/">开发极路由云插件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">厂商 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../gee/">极路由</a>
+</li>
+                            
+<li >
+    <a href="../youku/">优酷路由宝</a>
+</li>
+                            
+<li >
+    <a href="../miwifi/">小米路由</a>
+</li>
+                            
+<li >
+    <a href="../modou/">魔豆</a>
+</li>
+                            
+<li class="active">
+    <a href="./">网件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../downloads/">下载</a>
+                    </li>
+                    <li >
+                        <a href="../../about/">关于我们</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../modou/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../../downloads/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/openwrtio/openwrtio.github.io/edit/mkdocs/docs/docs/netgear.md">Edit on Github</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#netgear">netgear 网件</a></li>
+            <li><a href="#wndr3700-openwrt">WNDR3700 openwrt 刷机步骤</a></li>
+            <li><a href="#_1">参考资料</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="netgear">netgear 网件</h1>
+<h2 id="wndr3700-openwrt">WNDR3700 openwrt 刷机步骤</h2>
+<p>下载openwrt固件：</p>
+<pre><code>wget https://archive.openwrt.org/barrier_breaker/14.07/ar71xx/nand/openwrt-ar71xx-nand-wndr3700v4-ubi-factory.img -O firmware.img
+</code></pre>
+
+<p>关机状态下，按住reset，开机，等待绿灯闪烁时，松开reset。把电脑设置成静态IP：192.168.1.x，然后把固件上传到路由器中，指令如下：</p>
+<pre><code>curl -T firmware.img tftp://192.168.1.1
+</code></pre>
+
+<p><img alt="flash openwrt wndr3700 curl tftp" src="../../img/flash-openwrt-wndr3700-curl-tftp.png" /></p>
+<p>会看到很多灯同时亮起，然后自动重启。刷机到此完成，即可telnet或http访问路由器。如图：</p>
+<p><img alt="openwrt telnet" src="../../img/openwrt-telnet.png" />
+<img alt="openwrt web wndr3700v4" src="../../img/openwrt-web-wndr3700v4.png" /></p>
+<h2 id="_1">参考资料</h2>
+<p>Netgear WNDR3700 and WNDR37AV <a href="http://wiki.openwrt.org/toh/netgear/wndr3700">http://wiki.openwrt.org/toh/netgear/wndr3700</a></p>
+<div id="comments" data-thread-key="docs-netgear"></div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a title="帮助我们：点击注册七牛，本站将获得流量供大家下载使用" href="https://portal.qiniu.com/signup?code=3lafkpsz7yes1" target="_blank"><img src="https://developer.qiniu.com/assets/qiniu-transparent-9c01479a982463fdafe1c97a0254a99140eea97dcc6891489b5752a557b0212f.png" alt="七牛云" /></a><a rel="nofollow" href="http://www.miitbeian.gov.cn/">苏ICP备15020382号-1</a> <script type="text/javascript"> window.zhuge = window.zhuge || [];window.zhuge.methods = "_init debug identify track trackLink trackForm page".split(" "); window.zhuge.factory = function(b) {return function() {var a = Array.prototype.slice.call(arguments);a.unshift(b); window.zhuge.push(a);return window.zhuge;}};for (var i = 0; i < window.zhuge.methods.length; i++) { var key = window.zhuge.methods[i];window.zhuge[key] = window.zhuge.factory(key);}window.zhuge.load = function(b, x) { if (!document.getElementById("zhuge-js")) {var a = document.createElement("script");var verDate = new Date(); var verStr = verDate.getFullYear().toString()+ verDate.getMonth().toString() + verDate.getDate().toString(); a.type = "text/javascript";a.id = "zhuge-js";a.async = !0; a.src = "//zgsdk.zhugeio.com/zhuge.min.js?v=" + verStr; a.onerror = function(){window.zhuge.identify = window.zhuge.track = function(ename, props, callback){if(callback && Object.prototype.toString.call(callback) === '[object Function]')callback();};}; var c = document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a, c);window.zhuge._init(b, x)}}; window.zhuge.load('f6a2e8eed9e447ea89a63b87763ec7df');//配置应用的AppKey </script></p>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

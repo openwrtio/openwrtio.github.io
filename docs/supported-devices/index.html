@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://openwrt.io/docs/supported-devices/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>支持的硬件 - OpenWrt.io</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-63908544-1', 'openwrt.io');
+            ga('send', 'pageview');
+        </script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">OpenWrt.io</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">首页</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Openwrt文档 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../beginners-guide/">新手指南</a>
+</li>
+                            
+<li class="active">
+    <a href="./">支持的硬件</a>
+</li>
+                            
+<li >
+    <a href="../developer-guide/">开发者指南</a>
+</li>
+                            
+<li >
+    <a href="../opkg/">opkg软件源</a>
+</li>
+                            
+<li >
+    <a href="../build-a-single-package/">编译package</a>
+</li>
+                            
+<li >
+    <a href="../smart-vpn/">智能VPN</a>
+</li>
+                            
+<li >
+    <a href="../flashing/">刷机</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository/">搭建opkg软件仓库</a>
+</li>
+                            
+<li >
+    <a href="../build-firmware/">编译固件</a>
+</li>
+                            
+<li >
+    <a href="../create-package/">开发package</a>
+</li>
+                            
+<li >
+    <a href="../build-openwrt-package-using-docker/">docker编译package</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository-using-docker-ci/">docker CI搭建opkg源</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">云插件 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../create-gee-app/">开发极路由云插件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">厂商 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../gee/">极路由</a>
+</li>
+                            
+<li >
+    <a href="../youku/">优酷路由宝</a>
+</li>
+                            
+<li >
+    <a href="../miwifi/">小米路由</a>
+</li>
+                            
+<li >
+    <a href="../modou/">魔豆</a>
+</li>
+                            
+<li >
+    <a href="../netgear/">网件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../downloads/">下载</a>
+                    </li>
+                    <li >
+                        <a href="../../about/">关于我们</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../beginners-guide/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../developer-guide/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/openwrtio/openwrtio.github.io/edit/mkdocs/docs/docs/supported-devices.md">Edit on Github</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#buyers-guide">购买指南 buyers guide</a></li>
+            <li><a href="#openwrt-vendors">Openwrt Vendors 智能路由器厂商 软件对比</a></li>
+        <li class="main "><a href="#oobe-openwrt">OOBE 出厂自带OpenWrt的硬件</a></li>
+            <li><a href="#linksys">linksys 领势</a></li>
+            <li><a href="#gee">gee 极路由</a></li>
+            <li><a href="#mi">mi 小米路由</a></li>
+        <li class="main "><a href="#flash-openwrt">Flash OpenWrt 需要手动刷机的硬件</a></li>
+            <li><a href="#linksys_1">linksys 领势（厂商官方提供开源固件）</a></li>
+            <li><a href="#buffalo">buffalo 巴法络</a></li>
+            <li><a href="#netgear">netgear 美国网件</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="buyers-guide">购买指南 buyers guide</h2>
+<p>OpenWrt路由器分为两种：出厂自带OpenWrt系统的（OOBE 开箱即用） 和 出厂不带需要刷机的。</p>
+<p>出厂自带OpenWrt系统的路由器，是不是哪个厂商的都可以自由装软件？不是的，需要厂商开放root权限，才可以登录到路由器中安装软件。即使有了root，如果根目录不可写，那opkg就无法使用了，厂商抛弃了OpenWrt最大的优点，自废武功（小米和魔豆就是这么干的……），装软件会很麻烦，只能手动解压复制进去。所以买路由器时一定要关注这两点。请看下面的表格，建议购买极路由最新款。</p>
+<p>如果是买普通路由器，自己刷机，则没有这两个烦恼，刷的开源固件都是开放root的。是不是任何路由器都可以刷OpenWrt系统？不是的，需要达到一定的配置，而且有厂商或爱好者进行开发适配，才有系统可用。所以请按照本页面的列表进行购买。</p>
+<h3 id="openwrt-vendors">Openwrt Vendors 智能路由器厂商 软件对比</h3>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>开放root</th>
+<th>/根目录可写</th>
+<th>开放OpenWrt SDK</th>
+<th>OpenWrt版本</th>
+<th>内核版本</th>
+<th>内网远程控制</th>
+<th>软件商城</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.linksys.com/cn/">领势Linksys</a></td>
+<td>是</td>
+<td>是</td>
+<td>是(<a href="https://archive.openwrt.org/chaos_calmer/15.05/mvebu/generic/">下载</a>)</td>
+<td>15.05</td>
+<td>3.18.20</td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr>
+<td><a href="http://hiwifi.com/">极路由</a></td>
+<td>是(<a href="http://bbs.hiwifi.com/thread-74899-1-1.html">自助开启</a>)</td>
+<td>是</td>
+<td>是(<a href="http://dl.openwrt.io/vendors/gee/">下载</a>)</td>
+<td>14.07</td>
+<td>3.10.49</td>
+<td>有</td>
+<td>有</td>
+</tr>
+<tr>
+<td><a href="http://miwifi.com/">小米</a></td>
+<td>是(<a href="http://miwifi.com/miwifi_open.html">自助开启</a>)</td>
+<td>否</td>
+<td>否</td>
+<td>12.09</td>
+<td>2.6.36</td>
+<td>有</td>
+<td>有</td>
+</tr>
+</tbody>
+</table>
+<h2 id="oobe-openwrt">OOBE 出厂自带OpenWrt的硬件</h2>
+<h3 id="linksys">linksys 领势</h3>
+<p><a href="http://www.linksys.com/cn/">http://www.linksys.com/cn/</a></p>
+<table>
+<thead>
+<tr>
+<th>上市时间</th>
+<th>型号</th>
+<th>价格</th>
+<th>OpenWrt</th>
+<th>Platform</th>
+<th>CPU频率</th>
+<th>ROM</th>
+<th>RAM</th>
+<th>2.4G</th>
+<th>5G</th>
+<th>有线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015年10月</td>
+<td>WRT1900ACS</td>
+<td><a href="https://item.jd.com/3949272.html">京东￥1299</a></td>
+<td>15.05</td>
+<td></td>
+<td>双核1.6G</td>
+<td>128M</td>
+<td>512M</td>
+<td>600M</td>
+<td>AC 1300M</td>
+<td>5x 1000M</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gee">gee 极路由</h3>
+<p><a href="https://www.hiwifi.com/">https://www.hiwifi.com/</a></p>
+<table>
+<thead>
+<tr>
+<th>上市时间</th>
+<th>型号</th>
+<th>价格</th>
+<th>OpenWrt</th>
+<th>Platform</th>
+<th>CPU频率</th>
+<th>ROM</th>
+<th>RAM</th>
+<th>2.4G</th>
+<th>5G</th>
+<th>有线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2017年4月</td>
+<td>极3Pro</td>
+<td><a href="https://union-click.jd.com/jdc?e=0&amp;p=AyIOZRprFwoUB1ESUyVGTV8LRGtMR1dGFxBFC1pXUwkEAEAdQFkJBVkdBBIDXBNETEdOWmVbAWZpT3EGTDkdAUJXVVMOEmp2Ux5NVxlsEQZVHUcUBQ4HUwpbEgkQBl4aXSUAEwRUH1ocARs3VRtaFQYiN1Uaa0NsEgZUGloUAxoGUitcHAERBV0aWBAyEgJdHVwcCxEGUx9eFTIVNwZGC0dYRlEDK2slMg%3D%3D&amp;t=W1dCFFlQCxxKQgFHRE5XDVULR0UXChQHURJTCltXWwg%3D">京东￥249</a></td>
+<td></td>
+<td>MTK MT7620A</td>
+<td>580</td>
+<td>128M</td>
+<td>128M</td>
+<td>300M</td>
+<td>AC 867M</td>
+<td>3x 1000M</td>
+</tr>
+<tr>
+<td>2016年11月</td>
+<td>极4 HC5962</td>
+<td><a href="https://union-click.jd.com/jdc?e=0&amp;p=AyIOZRprFwYWAlcYXyVGTV8LRGtMR1dGFxBFC1pXUwkEAEAdQFkJBVkRBhcFVh9ETEdOWmViLUgLFHgOHD5RWk98VkQDS1oaQktrVxlsEQZVHUcUBQ4HUwpbEgkRBV4aXiUAEwRUH1ocARs3VRtaFQYiN1Uaa0NsEgZUGloUAxoGUitcHAERBV0aWBAyEgJdHVwcBBQOUBJfEDIVNwZGC0dYRlEDK2slMg%3D%3D&amp;t=W1dCFFlQCxxKQgFHRE5XDVULR0UXBhYCVxhfCltXWwg%3D">京东329</a></td>
+<td>14.07</td>
+<td>MTK MT7621AT</td>
+<td>双核880M</td>
+<td>128M</td>
+<td>256M</td>
+<td>300M</td>
+<td>AC 867M</td>
+<td>4x 1000M</td>
+</tr>
+<tr>
+<td>2015年5月</td>
+<td>极1s HC5661A</td>
+<td><a href="https://union-click.jd.com/jdc?e=0&amp;p=AyIOZRprFQITA1AaWCVGTV8LRGtMR1dGFxBFC1pXUwkEAEAdQFkJBVsVAxYCVBhETEdOWmVsOkdlW1BLZjtxSkxCPUcufEB3dVFrVxlsEQZVHUcUBQ4HUwpbEgkQAl4bXSUAEwRUH1ocARs3VRtaFQYiN1Uaa0NsEgZUGloUAxoGUitcHAERBV0aWBAyEgJdHVwcCxcDUxpeFjIVNwZGC0dYRlEDK2slMg%3D%3D&amp;t=W1dCFFlQCxxKQgFHRE5XDVULR0UVAhMDUBpYCltXWwg%3D">京东￥89</a></td>
+<td>12.09</td>
+<td>MTK MT7628A</td>
+<td>580</td>
+<td>16M</td>
+<td>128M</td>
+<td>300M</td>
+<td></td>
+<td>5x 100M</td>
+</tr>
+<tr>
+<td>2015年3月</td>
+<td>极3 HC5861</td>
+<td><a href="https://union-click.jd.com/jdc?e=0&amp;p=AyIOZRprFQAbAFMaXCVGTV8LRGtMR1dGFxBFC1pXUwkEAEAdQFkJBVsXCxUBVBxETEdOWmUdGW9CYnEJbTtncBNcUk8SaQtGfSddVxlsEQZVHUcUBQ4HUwpbEgkQA14aXCUAEwRUH1ocARs3VRtaFQYiN1Uaa0NsEgZUGloUAxoGUitcHAERBV0aWBAyEgJdHVwcCxYGUhpeEzIVNwZGC0dYRlEDK2slMg%3D%3D&amp;t=W1dCFFlQCxxKQgFHRE5XDVULR0UVABsAUxpcCltXWwg%3D">京东￥269</a></td>
+<td>12.09</td>
+<td>MTK MT7620A</td>
+<td>580</td>
+<td>16M</td>
+<td>128M</td>
+<td>300M</td>
+<td>AC 867M</td>
+<td>WAN: 1x 100M, LAN: 1x 1000M, 1x 100M</td>
+</tr>
+<tr>
+<td>2014年6月</td>
+<td>极1s硬盘版 HC5663</td>
+<td>￥209</td>
+<td>12.09</td>
+<td>MTK MT7620A</td>
+<td>580</td>
+<td>16M</td>
+<td>128M</td>
+<td>300M</td>
+<td></td>
+<td>5x 100M</td>
+</tr>
+<tr>
+<td>2013年11月</td>
+<td>极2 HC5761</td>
+<td>￥179</td>
+<td>12.09</td>
+<td>MTK MT7620A</td>
+<td>580</td>
+<td>16M</td>
+<td>128M</td>
+<td>300M</td>
+<td>AC 433M</td>
+<td>2x 100M</td>
+</tr>
+<tr>
+<td>2013年11月</td>
+<td>极1s HC5661</td>
+<td>￥109</td>
+<td>12.09</td>
+<td>MTK MT7620A</td>
+<td>580</td>
+<td>16M</td>
+<td>128M</td>
+<td>300M</td>
+<td></td>
+<td>5x 100M</td>
+</tr>
+<tr>
+<td>2013年3月</td>
+<td>极1 HC6361</td>
+<td>￥199</td>
+<td>12.09</td>
+<td>Atheros AR9331</td>
+<td>400</td>
+<td>16M</td>
+<td>64M</td>
+<td>150M</td>
+<td></td>
+<td>3x 100M</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mi">mi 小米路由</h3>
+<p><a href="http://miwifi.com/">http://miwifi.com/</a></p>
+<table>
+<thead>
+<tr>
+<th>上市时间</th>
+<th>型号</th>
+<th>价格</th>
+<th>OpenWrt</th>
+<th>Platform</th>
+<th>CPU频率</th>
+<th>ROM</th>
+<th>RAM</th>
+<th>2.4G</th>
+<th>5G</th>
+<th>有线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015年8月</td>
+<td>小米路由器青春版</td>
+<td><a href="http://union.click.jd.com/jdc?e=&amp;p=AyIBZRprFQsWBFIZUyVGTV8LRGtMR1dGXgVFTUdGW0pADgpQTFtLG1IRARUFXQQCUF5PNyJTXXQEaG4KeCIPWEtEFgEMVEsbGSUXVyUAEwRUH1ocARs3VRtaFQYiNzRpa15sEzdlG14QARYCVxteHAETBGUc&amp;t=W1dCFBBFC1pXUwkEAEAdQFkJBVscBhEAVxNETEdOWg%3D%3D">京东￥89</a></td>
+<td>12.09</td>
+<td>MTK MT7628N</td>
+<td>580</td>
+<td>16M</td>
+<td>64M</td>
+<td>300M</td>
+<td></td>
+<td>3x 100m</td>
+</tr>
+<tr>
+<td>2015年6月</td>
+<td>新小米路由R2D</td>
+<td><a href="http://union.click.jd.com/jdc?e=&amp;p=AyIBZRprFDJWWA1FBCVbV0IUEEULWldTCQQAQB1AWQkFWxIEEwZdE0RMR05aZWYCfGkRZj5lORJKaXRQfyUXRVZyJmtXGTIQBlYaXxQLEQ5lG1sUAhY3ZXopJTI%3D&amp;t=W1dCFBBFC1pXUwkEAEAdQFkJBVsSBBMGXRNETEdOWg%3D%3D">京东￥699</a></td>
+<td></td>
+<td>Boardcom BCM4709C</td>
+<td>双核1.4G</td>
+<td>512M</td>
+<td>256M</td>
+<td>300M</td>
+<td>867M</td>
+<td>4x 1000M</td>
+</tr>
+<tr>
+<td>2014年4月</td>
+<td>小米路由R1D</td>
+<td><a href="http://union.click.jd.com/jdc?e=&amp;p=AyIBZRprFDJWWA1FBCVbV0IUEEULWldTCQQAQB1AWQkFWxcAFwFWHERMR05aZUYZVGkVbCBiPm8Fa28Jc0Fjd3AGCmtXGTIQBlYaXxQLEQ5lG1sUAhY3ZXopJTI%3D&amp;t=W1dCFBBFC1pXUwkEAEAdQFkJBVsXABcBVhxETEdOWg%3D%3D">京东￥699</a></td>
+<td></td>
+<td>Boardcom BCM4709</td>
+<td>双核1G</td>
+<td>32M</td>
+<td>256M</td>
+<td>300M</td>
+<td>867M</td>
+<td>3x 1000M</td>
+</tr>
+<tr>
+<td>2014年4月</td>
+<td>小米路由mini</td>
+<td><a href="http://union.click.jd.com/jdc?e=&amp;p=AyIBZRprFDJWWA1FBCVbV0IUEEULWldTCQQAQB1AWQkFWxYEGgdTG0RMR05aZXgPD0pOBRx5OXZwFkFUQ1xRaVQDNWtXGTIQBlYaXxQLEQ5lG1sUAhY3ZXopJTI%3D&amp;t=W1dCFBBFC1pXUwkEAEAdQFkJBVsWBBoHUxtETEdOWg%3D%3D">京东￥129</a></td>
+<td>12.09</td>
+<td>MTK MT7620A</td>
+<td>580</td>
+<td>16M</td>
+<td>128M</td>
+<td>300M</td>
+<td>867M</td>
+<td>3x 100M</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flash-openwrt">Flash OpenWrt 需要手动刷机的硬件</h2>
+<h3 id="linksys_1">linksys 领势（厂商官方提供开源固件）</h3>
+<p><a href="http://www.linksys.com/cn/">http://www.linksys.com/cn/</a></p>
+<table>
+<thead>
+<tr>
+<th>上市时间</th>
+<th>型号</th>
+<th>价格</th>
+<th>OpenWrt</th>
+<th>Platform</th>
+<th>CPU频率</th>
+<th>ROM</th>
+<th>RAM</th>
+<th>2.4G</th>
+<th>5G</th>
+<th>有线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015年7月</td>
+<td>WRT1900AC v2</td>
+<td><a href="http://union.click.jd.com/jdc?e=&amp;p=AyIBZRprFDJWWA1FBCVbV0IUEEULWldTCQQAQB1AWQkFWxMAEABUGURMR05aZRsoY0toWAZcPklaYEwdTV1wRRBBC3tXGTIQBlYaXxQLEQ5lG1sUAhY3ZXopJTIiB1AZXRUCFg9QHVoXBg%3D%3D&amp;t=W1dCFBBFC1pXUwkEAEAdQFkJBVsTABAAVBlETEdOWg%3D%3D">京东￥1798</a></td>
+<td>15.05</td>
+<td>Marvell 88F6820</td>
+<td>双核1.3G</td>
+<td>128M</td>
+<td>512M</td>
+<td>600M</td>
+<td>AC 1300M</td>
+<td>5x 1000M</td>
+</tr>
+<tr>
+<td>2015年7月</td>
+<td>WRT1200AC</td>
+<td><a href="http://union.click.jd.com/jdc?e=&amp;p=AyIBZRprFDJWWA1FBCVbV0IUEEULWldTCQQAQB1AWQkFWxMAEANdH0RMR05aZW86Q0NzeCdrOXdgEA48HjtUWXZjLE1XGTIQBlYaXxQLEQ5lG1sUAhY3ZXopJTIiB1AZXRUCFQFVGVkXBw%3D%3D&amp;t=W1dCFBBFC1pXUwkEAEAdQFkJBVsTABADXR9ETEdOWg%3D%3D">京东￥1248</a></td>
+<td>15.05</td>
+<td>Marvell 88F6820</td>
+<td>双核1.3G</td>
+<td>128M</td>
+<td>512M</td>
+<td>400M</td>
+<td>AC 867M</td>
+<td>5x 1000M</td>
+</tr>
+</tbody>
+</table>
+<h3 id="buffalo">buffalo 巴法络</h3>
+<table>
+<thead>
+<tr>
+<th>上市时间</th>
+<th>型号</th>
+<th>价格</th>
+<th>OpenWrt</th>
+<th>Platform</th>
+<th>CPU频率</th>
+<th>ROM</th>
+<th>RAM</th>
+<th>2.4G</th>
+<th>5G</th>
+<th>有线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>WZR-1750DHP(D)</td>
+<td><a href="http://goods1.moximoxi.net/goods-B00BWFK278.html">日亚￥870</a></td>
+<td>trunk</td>
+<td>Broadcom BCM4708</td>
+<td>双核800M</td>
+<td>128M</td>
+<td>512M</td>
+<td>450M</td>
+<td>AC 1300M</td>
+<td>5x 1000M</td>
+</tr>
+</tbody>
+</table>
+<h3 id="netgear">netgear 美国网件</h3>
+<table>
+<thead>
+<tr>
+<th>上市时间</th>
+<th>型号</th>
+<th>价格</th>
+<th>OpenWrt</th>
+<th>Platform</th>
+<th>CPU频率</th>
+<th>ROM</th>
+<th>RAM</th>
+<th>2.4G</th>
+<th>5G</th>
+<th>有线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>WNDR4300</td>
+<td><a href="http://union.click.jd.com/jdc?e=&amp;p=AyIBZRprFDJWWA1FBCVbV0IUEEULWldTCQQAQB1AWQkFUhcHEQNSBAJQXk83HV0pYH5GXFd%2BUlV%2BbGYCXCJXcHZlJRdXJQATBFQfWhwBGzdVG1oVBiI3NGlrJQ%3D%3D&amp;t=W1dCFBBFC1pXUwkEAEAdQFkJBVIXBxEDUgQCUF5P">京东￥369</a></td>
+<td>14.07</td>
+<td>Atheros AR9344</td>
+<td>560</td>
+<td>128M</td>
+<td>128M</td>
+<td>300M</td>
+<td>n 450M</td>
+<td>5x 1000M</td>
+</tr>
+<tr>
+<td></td>
+<td>WNDR3700 v4</td>
+<td><a href="http://union.click.jd.com/jdc?e=&amp;p=AyIBZRprFDJWWA1FBCVbV0IUEEULWldTCQQAQB1AWQkFXBMBEw5XBAJQXk83DHkMfQtxVCF5Bw8KFH8pSDNoSWt8AxdXJQATBFQfWhwBGzdVG1oVBiI3NGlrJTISAlcdWBUGFgZVH1sd&amp;t=W1dCFBBFC1pXUwkEAEAdQFkJBVwTARMOVwQCUF5P">京东￥299</a></td>
+<td>14.07</td>
+<td>Atheros AR9344</td>
+<td>560</td>
+<td>128M</td>
+<td>128M</td>
+<td>300M</td>
+<td>n 300M</td>
+<td>5x 1000M</td>
+</tr>
+<tr>
+<td></td>
+<td>WNDR3400 v2</td>
+<td><a href="http://union.click.jd.com/jdc?e=&amp;p=AyIBZRprFDJWWA1FBCVbV0IUEEULWldTCQQAQB1AWQkFXhcHGwBWBAJQXk83UG1aSQJ0UDd4PGdqQB1XfFJcZ29zAxdXJQATBFQfWhwBGzdVG1oVBiI3NGlrJQ%3D%3D&amp;t=W1dCFBBFC1pXUwkEAEAdQFkJBV4XBxsAVgQCUF5P">京东￥299</a></td>
+<td>14.07</td>
+<td>Broadcom BCM5357</td>
+<td>530</td>
+<td>8M</td>
+<td>64M</td>
+<td>300M</td>
+<td>n 300M</td>
+<td>5x 100M</td>
+</tr>
+</tbody>
+</table>
+<div id="comments" data-thread-key="docs-supported-devices"></div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a title="帮助我们：点击注册七牛，本站将获得流量供大家下载使用" href="https://portal.qiniu.com/signup?code=3lafkpsz7yes1" target="_blank"><img src="https://developer.qiniu.com/assets/qiniu-transparent-9c01479a982463fdafe1c97a0254a99140eea97dcc6891489b5752a557b0212f.png" alt="七牛云" /></a><a rel="nofollow" href="http://www.miitbeian.gov.cn/">苏ICP备15020382号-1</a> <script type="text/javascript"> window.zhuge = window.zhuge || [];window.zhuge.methods = "_init debug identify track trackLink trackForm page".split(" "); window.zhuge.factory = function(b) {return function() {var a = Array.prototype.slice.call(arguments);a.unshift(b); window.zhuge.push(a);return window.zhuge;}};for (var i = 0; i < window.zhuge.methods.length; i++) { var key = window.zhuge.methods[i];window.zhuge[key] = window.zhuge.factory(key);}window.zhuge.load = function(b, x) { if (!document.getElementById("zhuge-js")) {var a = document.createElement("script");var verDate = new Date(); var verStr = verDate.getFullYear().toString()+ verDate.getMonth().toString() + verDate.getDate().toString(); a.type = "text/javascript";a.id = "zhuge-js";a.async = !0; a.src = "//zgsdk.zhugeio.com/zhuge.min.js?v=" + verStr; a.onerror = function(){window.zhuge.identify = window.zhuge.track = function(ename, props, callback){if(callback && Object.prototype.toString.call(callback) === '[object Function]')callback();};}; var c = document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a, c);window.zhuge._init(b, x)}}; window.zhuge.load('f6a2e8eed9e447ea89a63b87763ec7df');//配置应用的AppKey </script></p>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

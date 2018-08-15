@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://openwrt.io/docs/gee/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>极路由 - OpenWrt.io</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-63908544-1', 'openwrt.io');
+            ga('send', 'pageview');
+        </script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">OpenWrt.io</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">首页</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Openwrt文档 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../beginners-guide/">新手指南</a>
+</li>
+                            
+<li >
+    <a href="../supported-devices/">支持的硬件</a>
+</li>
+                            
+<li >
+    <a href="../developer-guide/">开发者指南</a>
+</li>
+                            
+<li >
+    <a href="../opkg/">opkg软件源</a>
+</li>
+                            
+<li >
+    <a href="../build-a-single-package/">编译package</a>
+</li>
+                            
+<li >
+    <a href="../smart-vpn/">智能VPN</a>
+</li>
+                            
+<li >
+    <a href="../flashing/">刷机</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository/">搭建opkg软件仓库</a>
+</li>
+                            
+<li >
+    <a href="../build-firmware/">编译固件</a>
+</li>
+                            
+<li >
+    <a href="../create-package/">开发package</a>
+</li>
+                            
+<li >
+    <a href="../build-openwrt-package-using-docker/">docker编译package</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository-using-docker-ci/">docker CI搭建opkg源</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">云插件 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../create-gee-app/">开发极路由云插件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">厂商 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li class="active">
+    <a href="./">极路由</a>
+</li>
+                            
+<li >
+    <a href="../youku/">优酷路由宝</a>
+</li>
+                            
+<li >
+    <a href="../miwifi/">小米路由</a>
+</li>
+                            
+<li >
+    <a href="../modou/">魔豆</a>
+</li>
+                            
+<li >
+    <a href="../netgear/">网件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../downloads/">下载</a>
+                    </li>
+                    <li >
+                        <a href="../../about/">关于我们</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../create-gee-app/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../youku/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/openwrtio/openwrtio.github.io/edit/mkdocs/docs/docs/gee.md">Edit on Github</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#_1">极路由固件下载</a></li>
+        <li class="main "><a href="#_2">极路由刷官方原厂固件</a></li>
+        <li class="main "><a href="#_3">网页查看极路由设备型号和固件版本</a></li>
+        <li class="main "><a href="#_4">命令查看极路由设备型号</a></li>
+        <li class="main "><a href="#_5">命令查看极路由固件版本</a></li>
+        <li class="main "><a href="#opkg">官方 opkg 配置</a></li>
+        <li class="main "><a href="#kernel-vermagic">kernel vermagic</a></li>
+            <li><a href="#3-hc5861">极3 HC5861</a></li>
+            <li><a href="#2-hc5761">极2 HC5761</a></li>
+            <li><a href="#1s-hc5661a">极1s新款 HC5661A</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="_1">极路由固件下载</h2>
+<table>
+<thead>
+<tr>
+<th>rom版本</th>
+<th>极4增强版 HC5962</th>
+<th>极3Pro C312B</th>
+<th>极3S C312A</th>
+<th>极1s新款 HC5661A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.3.4.18145s</td>
+<td></td>
+<td></td>
+<td><a href="http://ur.ikcd.net/HC5861-sysupgrade-20170505-3733f8d5.bin">下载</a></td>
+<td></td>
+</tr>
+<tr>
+<td>1.2.9.18176s</td>
+<td></td>
+<td></td>
+<td><a href="http://ur.ikcd.net/R32-sysupgrade-20170511-4b0dfb78.bin">下载</a></td>
+<td></td>
+</tr>
+<tr>
+<td>1.2.8.18050s</td>
+<td></td>
+<td><a href="http://ur.ikcd.net/R33-sysupgrade-20170426-5d75d5b8.bin">下载</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1.2.7.17841s</td>
+<td></td>
+<td><a href="http://ur.ikcd.net/R33-sysupgrade-20170401-4b0804c7.bin">下载</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1.2.5.15805s</td>
+<td><a href="http://ur.ikcd.net/HC5962-sysupgrade-20161108-2c142baf.bin">下载</a></td>
+<td></td>
+<td></td>
+<td><a href="http://ur.ikcd.net/HC5661A-sysupgrade-20161108-54c74d04.bin">下载</a></td>
+</tr>
+<tr>
+<td>0.9017.1.11380s</td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="http://ur.ikcd.net/HC5661A-sysupgrade-20151225-0c14834a.bin">下载</a></td>
+</tr>
+<tr>
+<td>0.9016.1.10769s</td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="http://ur.ikcd.net/HC5661A-sysupgrade-20151119-a92157d2.bin">下载</a></td>
+</tr>
+<tr>
+<td>0.9015.1.10299s</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>更多</td>
+<td><a href="http://dl.openwrt.io/vendors/gee/ralink/">查看</a></td>
+<td><a href="http://dl.openwrt.io/vendors/gee/mediatek/">查看</a></td>
+<td><a href="http://dl.openwrt.io/vendors/gee/ralink/">查看</a></td>
+<td><a href="http://dl.openwrt.io/vendors/gee/mediatek/">查看</a></td>
+</tr>
+</tbody>
+</table>
+<p>已停产型号的固件下载：</p>
+<ul>
+<li>极2老款 HC5761、极1s老款 HC5661 ： <a href="http://dl.openwrt.io/vendors/gee/ralink/">http://dl.openwrt.io/vendors/gee/ralink/</a></li>
+<li>极1 HC6361 ： <a href="http://dl.openwrt.io/vendors/gee/ar71xx/">http://dl.openwrt.io/vendors/gee/ar71xx/</a></li>
+</ul>
+<p>极路由官网ROM下载：<a href="https://www.hiwifi.com/rom">https://www.hiwifi.com/rom</a></p>
+<p>在极路由里执行<code>tcpdump</code>，然后在网页后台点升级然后取消，即可抓取极路由rom官方下载链接，然后打开<code>a.cap</code>搜索<code>bin</code>即可。指令如下：</p>
+<pre><code>tcpdump -i eth2.2 host ur.ikcd.net -w a.cap
+</code></pre>
+
+<h2 id="_2">极路由刷官方原厂固件</h2>
+<p>当极路由变砖无法正常工作时，可尝试刷机，一般都能修复。极路由支持tftp方式刷机，要求是：电脑装有tftp server，电脑IP需为192.168.1.88，固件名需为<code>recovery.bin</code>。</p>
+<p>在Ubuntu电脑上先安装tftp，指令如下：</p>
+<pre><code>sudo apt-get install tftpd-hpa tftp-hpa
+</code></pre>
+
+<p>然后修改配置<code>/etc/default/tftpd-hpa</code>，否则第一次下载成功，以后都会失败报错："Transfer timed out."。</p>
+<pre><code>sudo sed -i 's/^TFTP_ADDRESS.*/TFTP_ADDRESS=&quot;0.0.0.0:69&quot;/' /etc/default/tftpd-hpa
+</code></pre>
+
+<p>然后把固件拷进去，指令如下：</p>
+<pre><code>sudo chmod 777 /var/lib/tftpboot/
+cp ~/Downloads/openwrt-ramips-mt7620a-hiwifi-hc5761-squashfs-sysupgrade.bin /var/lib/tftpboot/recovery.bin
+chmod a+r /var/lib/tftpboot/recovery.bin
+sudo service tftpd-hpa restart
+</code></pre>
+
+<p>需要测试一下能否正常下载，指令如下：</p>
+<pre><code>cd ~
+tftp localhost
+tftp&gt; get recovery.bin
+tftp&gt; q
+ll recovery.bin
+</code></pre>
+
+<p><img alt="ubuntu tftp" src="../../img/ubuntu-tftp.png" /></p>
+<p>然后把电脑IP设置为192.168.1.88，如果电脑有双网卡的话，会很方便。如图：</p>
+<p><img alt="ubuntu static ip" src="../../img/ubuntu-static-ip.png" /></p>
+<p>然后按住极路由的RESET键（极3直接按，极2等老机器需要用尖锐物（笔、取卡针、通针等）），给极路由通电。</p>
+<p>观察电脑中tftp server的发送情况（可通过网速看出来），传输完毕即可松开RESET键。</p>
+<p>路由器面板的多个灯会轮流亮起（跑马灯效果），跑完以后，路由器自动重启，刷机即完成。</p>
+<h2 id="_3">网页查看极路由设备型号和固件版本</h2>
+<p>路由器网页后台的页脚，能看到“系统版本：设备型号 - 固件版本”，如图：</p>
+<p><img alt="gee device model and rom version in web" src="../../img/gee-device-model-and-rom-version-in-web.png" /></p>
+<h2 id="_4">命令查看极路由设备型号</h2>
+<pre><code>cat /proc/cmdline
+</code></pre>
+
+<p><img alt="gee device model in shell" src="../../img/gee-device-model-in-shell.png" /></p>
+<h2 id="_5">命令查看极路由固件版本</h2>
+<pre><code>cat /etc/openwrt_version
+</code></pre>
+
+<p><img alt="gee rom version in shell" src="../../img/gee-rom-version-in-shell.png" /></p>
+<h2 id="opkg">官方 opkg 配置</h2>
+<p>极路由官方opkg源地址为<code>https://upgrade.hiwifi.com/upgrade_file/{arch}-{board}/{rom_version}/packages</code>，比如极3的<code>opkg.conf</code>如下：</p>
+<pre><code>src/gz barrier_breaker https://upgrade.hiwifi.com/upgrade_file/ralink-HC5861/0.9012.1.9277s/packages
+dest root /
+dest ram /tmp
+lists_dir ext /var/opkg-lists
+option overlay_root /overlay
+option ssl_ca_path /etc/ca
+</code></pre>
+
+<p><img alt="gee j3 opkg" src="../../img/gee-j3-opkg.png" /></p>
+<p>极1s HC5661A的opkg源为：</p>
+<pre><code>src/gz barrier_breaker https://upgrade.hiwifi.com/upgrade_file/mediatek-HC5661A/0.9011.1.9117s/packages
+</code></pre>
+
+<h2 id="kernel-vermagic">kernel vermagic</h2>
+<h3 id="3-hc5861">极3 HC5861</h3>
+<table>
+<thead>
+<tr>
+<th>rom版本</th>
+<th>kernel vermagic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.9012.1.9277s</td>
+<td>3.3.8-1-9366384773eac1d7a54437bf481e0e6e</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-hc5761">极2 HC5761</h3>
+<table>
+<thead>
+<tr>
+<th>rom版本</th>
+<th>kernel vermagic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.9010.1.8595s</td>
+<td>3.3.8-1-28dfc55c32c354db6f9faef9daca146f</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1s-hc5661a">极1s新款 HC5661A</h3>
+<table>
+<thead>
+<tr>
+<th>rom版本</th>
+<th>kernel vermagic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.9011.1.9117s</td>
+<td>3.3.8-1-9b68df9bc038afc92a85c52c28fdd7a9</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>rom版本</th>
+<th>极1s HC5661</th>
+<th>极1 HC6361</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.9010.1.8595s</td>
+<td>3.3.8-1-9b559f8e77ad01e85dc739bc7b7f8b90</td>
+<td></td>
+</tr>
+<tr>
+<td>0.9008.2.8061s</td>
+<td></td>
+<td>3.3.8-1-b4233d54b1c65faf7ee539e246a3a6ff</td>
+</tr>
+<tr>
+<td>0.9004.3685s</td>
+<td></td>
+<td>3.3.8-1-fb5489e31e5354c05e417dc9e153f815</td>
+</tr>
+</tbody>
+</table>
+<div id="comments" data-thread-key="docs-gee"></div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a title="帮助我们：点击注册七牛，本站将获得流量供大家下载使用" href="https://portal.qiniu.com/signup?code=3lafkpsz7yes1" target="_blank"><img src="https://developer.qiniu.com/assets/qiniu-transparent-9c01479a982463fdafe1c97a0254a99140eea97dcc6891489b5752a557b0212f.png" alt="七牛云" /></a><a rel="nofollow" href="http://www.miitbeian.gov.cn/">苏ICP备15020382号-1</a> <script type="text/javascript"> window.zhuge = window.zhuge || [];window.zhuge.methods = "_init debug identify track trackLink trackForm page".split(" "); window.zhuge.factory = function(b) {return function() {var a = Array.prototype.slice.call(arguments);a.unshift(b); window.zhuge.push(a);return window.zhuge;}};for (var i = 0; i < window.zhuge.methods.length; i++) { var key = window.zhuge.methods[i];window.zhuge[key] = window.zhuge.factory(key);}window.zhuge.load = function(b, x) { if (!document.getElementById("zhuge-js")) {var a = document.createElement("script");var verDate = new Date(); var verStr = verDate.getFullYear().toString()+ verDate.getMonth().toString() + verDate.getDate().toString(); a.type = "text/javascript";a.id = "zhuge-js";a.async = !0; a.src = "//zgsdk.zhugeio.com/zhuge.min.js?v=" + verStr; a.onerror = function(){window.zhuge.identify = window.zhuge.track = function(ename, props, callback){if(callback && Object.prototype.toString.call(callback) === '[object Function]')callback();};}; var c = document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a, c);window.zhuge._init(b, x)}}; window.zhuge.load('f6a2e8eed9e447ea89a63b87763ec7df');//配置应用的AppKey </script></p>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

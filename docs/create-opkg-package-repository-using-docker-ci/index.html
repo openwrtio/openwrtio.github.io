@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://openwrt.io/docs/create-opkg-package-repository-using-docker-ci/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>docker CI搭建opkg源 - OpenWrt.io</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-63908544-1', 'openwrt.io');
+            ga('send', 'pageview');
+        </script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">OpenWrt.io</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">首页</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Openwrt文档 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../beginners-guide/">新手指南</a>
+</li>
+                            
+<li >
+    <a href="../supported-devices/">支持的硬件</a>
+</li>
+                            
+<li >
+    <a href="../developer-guide/">开发者指南</a>
+</li>
+                            
+<li >
+    <a href="../opkg/">opkg软件源</a>
+</li>
+                            
+<li >
+    <a href="../build-a-single-package/">编译package</a>
+</li>
+                            
+<li >
+    <a href="../smart-vpn/">智能VPN</a>
+</li>
+                            
+<li >
+    <a href="../flashing/">刷机</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository/">搭建opkg软件仓库</a>
+</li>
+                            
+<li >
+    <a href="../build-firmware/">编译固件</a>
+</li>
+                            
+<li >
+    <a href="../create-package/">开发package</a>
+</li>
+                            
+<li >
+    <a href="../build-openwrt-package-using-docker/">docker编译package</a>
+</li>
+                            
+<li class="active">
+    <a href="./">docker CI搭建opkg源</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">云插件 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../create-gee-app/">开发极路由云插件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">厂商 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../gee/">极路由</a>
+</li>
+                            
+<li >
+    <a href="../youku/">优酷路由宝</a>
+</li>
+                            
+<li >
+    <a href="../miwifi/">小米路由</a>
+</li>
+                            
+<li >
+    <a href="../modou/">魔豆</a>
+</li>
+                            
+<li >
+    <a href="../netgear/">网件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../downloads/">下载</a>
+                    </li>
+                    <li >
+                        <a href="../../about/">关于我们</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../build-openwrt-package-using-docker/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../create-gee-app/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/openwrtio/openwrtio.github.io/edit/mkdocs/docs/docs/create-opkg-package-repository-using-docker-ci.md">Edit on Github</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#dockeropkg">使用docker持续集成搭建opkg源</a></li>
+            <li><a href="#codingnet">把代码放到coding.net</a></li>
+            <li><a href="#daocloudci">在daocloud创建CI项目</a></li>
+            <li><a href="#daocloudymlci">编写daocloud.yml配置CI</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="dockeropkg">使用docker持续集成搭建opkg源</h1>
+<p>之前的文档<a href="../../docs/create-opkg-package-repository/">《opkg软件仓库》</a>讲解的是手动编译出ipk，然后手动上传到七牛。项目里package较少时，可以这么做。而如果package很多（比如开源项目），开发者经常提交，管理员会来不及编译，所以如果代码提交时触发自动编译自动发布，那就更方便了。git配合持续集成（Continued Integration，CI）可以实现这一点。</p>
+<p>常见的git代码托管服务有国际知名的<a href="https://github.com/">github.com</a>和国内飞快的<a href="http://coding.net/">coding.net</a>。</p>
+<p>常见的CI服务有国际知名的<a href="https://travis-ci.org/">travis-ci.org</a>和国内飞快的<a href="https://account.daocloud.io/signup?invite_code=c8bkkhc1uq8i7z8nin93">daocloud.io</a>。travis-ci可被github触发，但不支持docker；daocloud可被github、coding触发，支持docker，所以本文以coding和daocloud为例进行讲解。</p>
+<h2 id="codingnet">把代码放到coding.net</h2>
+<p>在coding.net上创建项目，提交packages代码。比如极路由packages代码在：<a href="https://coding.net/u/openwrtio/p/packages/git/tree/for-gee-ralink/">https://coding.net/u/openwrtio/p/packages/git/tree/for-gee-ralink/</a></p>
+<h2 id="daocloudci">在daocloud创建CI项目</h2>
+<p>在daocloud.io上创建项目，代码源选择coding的项目。如图：</p>
+<p><img alt="daocloud-build-flows" src="../../img/daocloud-build-flows.png" />
+<img alt="daocloud-build-flows-new" src="../../img/daocloud-build-flows-new.png" /></p>
+<h2 id="daocloudymlci">编写daocloud.yml配置CI</h2>
+<p>创建完项目，会发现并没有自动开始编译，那是因为还没有编写配置文件<code>daocloud.yml</code>，按照提示进行编写即可。</p>
+<p><img alt="daocloud-build-flows-one-ci" src="../../img/daocloud-build-flows-one-ci.png" /></p>
+<p>比如本项目的<code>daocloud.yml</code>在<a href="https://coding.net/u/openwrtio/p/packages/git/blob/for-gee-ralink/daocloud.yml">https://coding.net/u/openwrtio/p/packages/git/blob/for-gee-ralink/daocloud.yml</a>，内容如下：</p>
+<pre><code>image: openwrtio/openwrt-sdk-gee-ralink
+
+install:
+    - pwd
+    - ls
+    - wget -O /tmp/qiniu-devtools-linux_amd64-current.tar.gz http://devtools.qiniu.io/qiniu-devtools-linux_amd64-current.tar.gz
+    - tar -zxvf /tmp/qiniu-devtools-linux_amd64-current.tar.gz -C /usr/bin/
+
+before_script:
+    - pwd
+    - ls
+    - mkdir -p /root/openwrt/hc5761/package/feeds
+    - ln -s $PWD/* /root/openwrt/hc5761/package/feeds/
+    - cp qiniu.json /root/openwrt/hc5761/
+    - cd /root/openwrt/hc5761/
+    - echo 'CONFIG_PACKAGE_nodogsplash=m' &gt;&gt; .config
+    - make defconfig
+    - make package/feeds/net/nodogsplash/compile -j V=99
+    - cd bin/ralink/packages/
+    - ../../../scripts/ipkg-make-index.sh . &gt; Packages
+    - gzip -9c Packages &gt; Packages.gz
+
+script:
+    - pwd
+    - ls
+    - if [ -z $qiniu_access_key ]; then echo waiting daocloud; exit 1; fi
+    - cd /root/openwrt/hc5761/
+    - sed -i -e &quot;s|{src}|/root/openwrt/hc5761/bin/ralink/packages/|g&quot; -e &quot;s|{access_key}|$qiniu_access_key|g&quot; -e &quot;s|{secret_key}|$qiniu_secret_key|g&quot; -e &quot;s|{bucket}|dl-openwrt-io|g&quot; -e &quot;s|{key_prefix}|vendors/gee/ralink/packages/|g&quot; qiniu.json
+    - qrsync --check-exist qiniu.json
+    - qrsctl login $qiniu_user $qiniu_passwd
+    - qrsctl cdn/refresh dl-openwrt-io http://dl.openwrt.io/vendors/gee/ralink/packages/Packages.gz
+</code></pre>
+
+<p>可以看到install阶段安装了七牛上传工具，before_script阶段编译了package并生成索引，script阶段上传到七牛。</p>
+<p>把<code>daocloud.yml</code>提交git，将会触发持续集成。如图：</p>
+<p><img alt="daocloud-change-ci-yml.png" src="../../img/daocloud-change-ci-yml.png" />
+<img alt="daocloud-build-flows-one-ci-running.png" src="../../img/daocloud-build-flows-one-ci-running.png" />
+<img alt="daocloud-todo-hide-password" src="../../img/daocloud-todo-hide-password.png" /></p>
+<p>可以看到install、before_script都执行成功了，但上传到七牛时出错了，这是因为环境变量里缺少七牛密码，只能等daocloud做好网页环境变量时，才可以。大家可以关注<a href="http://weibo.com/u/5424712657">DaoCloud的微博</a>。</p>
+<div id="comments" data-thread-key="docs-create-opkg-package-repository-using-docker-ci"></div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a title="帮助我们：点击注册七牛，本站将获得流量供大家下载使用" href="https://portal.qiniu.com/signup?code=3lafkpsz7yes1" target="_blank"><img src="https://developer.qiniu.com/assets/qiniu-transparent-9c01479a982463fdafe1c97a0254a99140eea97dcc6891489b5752a557b0212f.png" alt="七牛云" /></a><a rel="nofollow" href="http://www.miitbeian.gov.cn/">苏ICP备15020382号-1</a> <script type="text/javascript"> window.zhuge = window.zhuge || [];window.zhuge.methods = "_init debug identify track trackLink trackForm page".split(" "); window.zhuge.factory = function(b) {return function() {var a = Array.prototype.slice.call(arguments);a.unshift(b); window.zhuge.push(a);return window.zhuge;}};for (var i = 0; i < window.zhuge.methods.length; i++) { var key = window.zhuge.methods[i];window.zhuge[key] = window.zhuge.factory(key);}window.zhuge.load = function(b, x) { if (!document.getElementById("zhuge-js")) {var a = document.createElement("script");var verDate = new Date(); var verStr = verDate.getFullYear().toString()+ verDate.getMonth().toString() + verDate.getDate().toString(); a.type = "text/javascript";a.id = "zhuge-js";a.async = !0; a.src = "//zgsdk.zhugeio.com/zhuge.min.js?v=" + verStr; a.onerror = function(){window.zhuge.identify = window.zhuge.track = function(ename, props, callback){if(callback && Object.prototype.toString.call(callback) === '[object Function]')callback();};}; var c = document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a, c);window.zhuge._init(b, x)}}; window.zhuge.load('f6a2e8eed9e447ea89a63b87763ec7df');//配置应用的AppKey </script></p>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

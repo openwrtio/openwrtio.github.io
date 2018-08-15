@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://openwrt.io/docs/smart-vpn/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>智能VPN - OpenWrt.io</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-63908544-1', 'openwrt.io');
+            ga('send', 'pageview');
+        </script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">OpenWrt.io</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">首页</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Openwrt文档 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../beginners-guide/">新手指南</a>
+</li>
+                            
+<li >
+    <a href="../supported-devices/">支持的硬件</a>
+</li>
+                            
+<li >
+    <a href="../developer-guide/">开发者指南</a>
+</li>
+                            
+<li >
+    <a href="../opkg/">opkg软件源</a>
+</li>
+                            
+<li >
+    <a href="../build-a-single-package/">编译package</a>
+</li>
+                            
+<li class="active">
+    <a href="./">智能VPN</a>
+</li>
+                            
+<li >
+    <a href="../flashing/">刷机</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository/">搭建opkg软件仓库</a>
+</li>
+                            
+<li >
+    <a href="../build-firmware/">编译固件</a>
+</li>
+                            
+<li >
+    <a href="../create-package/">开发package</a>
+</li>
+                            
+<li >
+    <a href="../build-openwrt-package-using-docker/">docker编译package</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository-using-docker-ci/">docker CI搭建opkg源</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">云插件 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../create-gee-app/">开发极路由云插件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">厂商 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../gee/">极路由</a>
+</li>
+                            
+<li >
+    <a href="../youku/">优酷路由宝</a>
+</li>
+                            
+<li >
+    <a href="../miwifi/">小米路由</a>
+</li>
+                            
+<li >
+    <a href="../modou/">魔豆</a>
+</li>
+                            
+<li >
+    <a href="../netgear/">网件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../downloads/">下载</a>
+                    </li>
+                    <li >
+                        <a href="../../about/">关于我们</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../build-a-single-package/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../flashing/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/openwrtio/openwrtio.github.io/edit/mkdocs/docs/docs/smart-vpn.md">Edit on Github</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#smart-vpn">智能网络分流 smart VPN</a></li>
+            <li><a href="#_1">常见的公司内网服务</a></li>
+            <li><a href="#ip">电脑设置路由表实现IP智能分流</a></li>
+            <li><a href="#dnsmasq">电脑设置dnsmasq实现域名智能分流</a></li>
+            <li><a href="#vpn">打造智能VPN路由器</a></li>
+            <li><a href="#_2">参考资料</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="smart-vpn">智能网络分流 smart VPN</h1>
+<p>智能VPN的典型场景是：在家或者出差办公时，需要连接公司内网（intranet），又不想把所有流量都通过公司转发，那样上网太慢，所以如果能配置外网黑名单，默认所有请求都走外网（internet），而黑名单的IP和域名不走外网，走VPN，这样分流就互不影响了。</p>
+<h2 id="_1">常见的公司内网服务</h2>
+<p>企鹅公司的内网网段为10.0.0.0/8，内部网站有passport.oa.com、isux.oa.com，访问之前需要先连接公司VPN。</p>
+<p>喵星人公司的内网网段为10.0.0.0/8，内部DNS为10.13.x.x，内部网站有<a href="http://crm.alibaba-inc.com/">crm.alibaba-inc.com</a>、<a href="http://work.alibaba-inc.com/">work.alibaba-inc.com</a>、<a href="http://aliway.com/">aliway.com</a>，访问之前需要先连接公司VPN（文档：<a href="https://alilang.alibaba-inc.com/portal/help.htm">https://alilang.alibaba-inc.com/portal/help.htm</a>），连接之后，访问截图如下：</p>
+<p><img alt="work.alibaba-inc.com" src="http://www.wooyun.org/upload/201407/301122373147d79597aa4f1329f166fc9af59d21.png" />
+<img alt="aliway.com" src="http://www.wooyun.org/upload/201407/30112315423270e792aa00cdf6ae921ff78547a6.png" /></p>
+<p>熊掌公司的内网网段为10.0.0.0/8，内部网站有family.baidu.com、erp.baidu.com、icafe.baidu.com，访问之前需要先连接公司VPN（文档：<a href="https://vpn.baidu.com/">vpn.baidu.com</a>）。</p>
+<p>执行下列指令：</p>
+<pre><code>nslookup passport.oa.com
+</code></pre>
+
+<p><img alt="tencent intranet nslookup" src="../../img/tencent-intranet-nslookup.png" /></p>
+<p>可以看到passport.oa.com无法解析，是个内网域名，要连上企鹅公司内网，使用公司内网DNS解析。</p>
+<p>假设家里的网络是192.168.199.0/24，路由器IP是192.168.199.1，DNS是192.168.199.1。以企鹅公司为例，假设公司DNS为10.0.0.1，公司FTP为10.0.0.21，公司内部网站为passport.oa.com。VPN网段为172.16.0.0/12。目标：智能分流，可直接访问公司FTP和oa。先从简单的开始：在电脑上实现分流。</p>
+<h2 id="ip">电脑设置路由表实现IP智能分流</h2>
+<p>家里电脑现在可以正常上网，网络状态和路由表如下：</p>
+<p><img alt="ubuntu default route" src="../../img/ubuntu-ifconfig-and-route.png" /></p>
+<p>可以看到默认路由是 0.0.0.0 192.168.199.1 eth0，即所有网络请求都通过eth0网卡发往192.168.199.1网关。</p>
+<p>现在连接公司VPN，如下图：</p>
+<p><img alt="ubuntu edit vpn" src="../../img/ubuntu-edit-vpn.png" />
+<img alt="ubuntu vpn route" src="../../img/ubuntu-vpn-route.png" />
+<img alt="ubuntu vpn nslookup intranet" src="../../img/ubuntu-vpn-nslookup-intranet.png" /></p>
+<p>可以看到建立VPN连接后，多了一个ppp0，IP为172.16.0.20，默认路由变成了ppp0，即所有网络请求都通过ppp0即VPN通道进行发送。内网域名也可以解析并访问了。</p>
+<p>如何默认走外网，而不是VPN呢？忽略路由表，断开重连即可，如图：</p>
+<p><img alt="ubuntu edit vpn ignore route" src="../../img/ubuntu-edit-vpn-ignore-route.png" />
+<img alt="ubuntu vpn ignore route" src="../../img/ubuntu-vpn-ignore-route.png" /></p>
+<p>这时再试试解析内网域名，显然不通了，即使我们知道网站的IP，也无法访问，如图：</p>
+<pre><code>nslookup passport.oa.com
+ping 10.0.0.80
+</code></pre>
+
+<p><img alt="ubuntu vpn ignore route nslookup" src="../../img/ubuntu-vpn-ignore-route-nslookup.png" /></p>
+<p>试试下面的指令：</p>
+<pre><code>ping 172.16.0.1
+</code></pre>
+
+<p><img alt="ubuntu vpn ignore route ping gateway" src="../../img/ubuntu-vpn-ignore-route-ping-gateway.png" /></p>
+<p>可以发现此时电脑和VPN网关是通畅的，也就是192.168.199.0/24能访问到172.16.0.0/12，但无法访问10.0.0.0/8。添加一条路由表即可：</p>
+<pre><code>sudo route add -net 10.0.0.0/8 ppp0
+</code></pre>
+
+<p><img alt="ubuntu route add" src="../../img/ubuntu-route-add.png" /></p>
+<p>可以看到IP能访问了，但公司内网域名还是无法解析，如果获得公司所有内网域名的IP，写到电脑hosts文件里，也算勉强能用了。缺点是一旦IP变化，就麻烦了，所有人都要改。所以最好能做到域名智能分流，请看下面的内容。</p>
+<h2 id="dnsmasq">电脑设置dnsmasq实现域名智能分流</h2>
+<p>尝试解析公司内网域名，不指定DNS 和 指定公司DNS进行对比，如下图：</p>
+<p><img alt="ubuntu nslookup custom dns" src="../../img/ubuntu-nslookup-custom-dns.png" /></p>
+<p>可以发现只要告诉电脑，凡是公司的域名都走公司DNS解析即可。在Ubuntu电脑上，系统自带的dnsmasq即可实现，指令如下：</p>
+<pre><code>echo &quot;server=/.oa.com/10.0.0.1&quot; | sudo tee -a /etc/dnsmasq.d/blacklist
+</code></pre>
+
+<p>不过Ubuntu重启dnsmasq比较麻烦，如下：</p>
+<pre><code>sudo service network-manager restart
+sudo stop lxc-net
+sudo start lxc-net
+</code></pre>
+
+<p><img alt="ubuntu dnsmasq custom server" src="../../img/ubuntu-dnsmasq-custom-server.png" /></p>
+<p>Linux电脑VPN智能分流到此完成。使用了sudo命令，也就是管理员权限。正常的Android和iOS设备没有root，没法使用此命令，而且如果是分公司办公，人人都要这样设置，维护成本会很高。有没有更好的方案？有，那就是——智能VPN路由器。</p>
+<h2 id="vpn">打造智能VPN路由器</h2>
+<p>OpenWrt路由器也是Linux，操作步骤和上面几乎一样，大家自行试验。如果做出来了，说明理解了路由表和iptables。如果有问题的话，请google找到教程，系统的学习Linux和iptables。</p>
+<h2 id="_2">参考资料</h2>
+<ul>
+<li>《通过某APP进入阿里内网》 <a href="http://www.wooyun.org/bugs/wooyun-2010-063730">http://www.wooyun.org/bugs/wooyun-2010-063730</a></li>
+<li>《我是如何进入阿里内网寻找马云大叔的》 <a href="http://www.wooyun.org/bugs/wooyun-2014-054113">http://www.wooyun.org/bugs/wooyun-2014-054113</a></li>
+<li>《一次成功的漫游腾讯内部网络过程》<a href="http://www.wooyun.org/bugs/wooyun-2010-054271">http://www.wooyun.org/bugs/wooyun-2010-054271</a></li>
+<li>《从一个phpinfo到一次半途而废的腾讯内网漫游之旅》<a href="http://www.wooyun.org/bugs/wooyun-2010-0121069">http://www.wooyun.org/bugs/wooyun-2010-0121069</a></li>
+<li>《百度某系统存在注入可导致内网被渗透》 <a href="http://www.wooyun.org/bugs/wooyun-2010-019150">http://www.wooyun.org/bugs/wooyun-2010-019150</a></li>
+<li>《一次失败的漫游百度内部网络过程》 <a href="http://www.wooyun.org/bugs/wooyun-2010-050906">http://www.wooyun.org/bugs/wooyun-2010-050906</a></li>
+</ul>
+<div id="comments" data-thread-key="docs-smart-vpn"></div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a title="帮助我们：点击注册七牛，本站将获得流量供大家下载使用" href="https://portal.qiniu.com/signup?code=3lafkpsz7yes1" target="_blank"><img src="https://developer.qiniu.com/assets/qiniu-transparent-9c01479a982463fdafe1c97a0254a99140eea97dcc6891489b5752a557b0212f.png" alt="七牛云" /></a><a rel="nofollow" href="http://www.miitbeian.gov.cn/">苏ICP备15020382号-1</a> <script type="text/javascript"> window.zhuge = window.zhuge || [];window.zhuge.methods = "_init debug identify track trackLink trackForm page".split(" "); window.zhuge.factory = function(b) {return function() {var a = Array.prototype.slice.call(arguments);a.unshift(b); window.zhuge.push(a);return window.zhuge;}};for (var i = 0; i < window.zhuge.methods.length; i++) { var key = window.zhuge.methods[i];window.zhuge[key] = window.zhuge.factory(key);}window.zhuge.load = function(b, x) { if (!document.getElementById("zhuge-js")) {var a = document.createElement("script");var verDate = new Date(); var verStr = verDate.getFullYear().toString()+ verDate.getMonth().toString() + verDate.getDate().toString(); a.type = "text/javascript";a.id = "zhuge-js";a.async = !0; a.src = "//zgsdk.zhugeio.com/zhuge.min.js?v=" + verStr; a.onerror = function(){window.zhuge.identify = window.zhuge.track = function(ename, props, callback){if(callback && Object.prototype.toString.call(callback) === '[object Function]')callback();};}; var c = document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a, c);window.zhuge._init(b, x)}}; window.zhuge.load('f6a2e8eed9e447ea89a63b87763ec7df');//配置应用的AppKey </script></p>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

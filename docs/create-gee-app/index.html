@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://openwrt.io/docs/create-gee-app/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>开发极路由云插件 - OpenWrt.io</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-63908544-1', 'openwrt.io');
+            ga('send', 'pageview');
+        </script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">OpenWrt.io</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">首页</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Openwrt文档 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../beginners-guide/">新手指南</a>
+</li>
+                            
+<li >
+    <a href="../supported-devices/">支持的硬件</a>
+</li>
+                            
+<li >
+    <a href="../developer-guide/">开发者指南</a>
+</li>
+                            
+<li >
+    <a href="../opkg/">opkg软件源</a>
+</li>
+                            
+<li >
+    <a href="../build-a-single-package/">编译package</a>
+</li>
+                            
+<li >
+    <a href="../smart-vpn/">智能VPN</a>
+</li>
+                            
+<li >
+    <a href="../flashing/">刷机</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository/">搭建opkg软件仓库</a>
+</li>
+                            
+<li >
+    <a href="../build-firmware/">编译固件</a>
+</li>
+                            
+<li >
+    <a href="../create-package/">开发package</a>
+</li>
+                            
+<li >
+    <a href="../build-openwrt-package-using-docker/">docker编译package</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository-using-docker-ci/">docker CI搭建opkg源</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">云插件 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li class="active">
+    <a href="./">开发极路由云插件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">厂商 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../gee/">极路由</a>
+</li>
+                            
+<li >
+    <a href="../youku/">优酷路由宝</a>
+</li>
+                            
+<li >
+    <a href="../miwifi/">小米路由</a>
+</li>
+                            
+<li >
+    <a href="../modou/">魔豆</a>
+</li>
+                            
+<li >
+    <a href="../netgear/">网件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../downloads/">下载</a>
+                    </li>
+                    <li >
+                        <a href="../../about/">关于我们</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../create-opkg-package-repository-using-docker-ci/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../gee/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/openwrtio/openwrtio.github.io/edit/mkdocs/docs/docs/create-gee-app.md">Edit on Github</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#_1">开发极路由云插件</a></li>
+            <li><a href="#_2">最简单的应用</a></li>
+            <li><a href="#_3">发布到插件市场</a></li>
+            <li><a href="#_4">带网页配置界面的插件</a></li>
+            <li><a href="#opkg">自定义opkg软件仓库的插件</a></li>
+            <li><a href="#_5">练习题</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="_1">开发极路由云插件</h1>
+<p>学会了编译ipk，也学会了opkg安装软件之后，下面讲解如何开发极路由应用（又称为APP或插件）。</p>
+<h2 id="_2">最简单的应用</h2>
+<p>一个最简单的极路由应用只需要一个<code>script</code>脚本文件，比如这个“超级开发者”项目（<a href="https://coding.net/u/openwrtio/p/super-developer-for-hiwifi-os/git/tree/master">https://coding.net/u/openwrtio/p/super-developer-for-hiwifi-os/git/tree/master</a>），代码如下：</p>
+<pre><code>#!/bin/sh
+
+install() {
+    opkg update
+    opkg install dropbear
+    /etc/init.d/dropbear enable
+
+    start
+
+    return $?
+}
+
+uninstall() {
+    stop
+    /etc/init.d/dropbear disable
+    opkg remove dropbear
+
+    return $?
+}
+
+start() {
+    /etc/init.d/dropbear start &gt;/dev/null 2&gt;&amp;1
+    return $?
+}
+
+stop() {
+    /etc/init.d/dropbear stop &gt;/dev/null 2&gt;&amp;1
+    return $?
+}
+
+# 检查运行状态
+status() {
+    local stat=&quot;running&quot;
+
+    pgrep dropbear &gt;/dev/null 2&gt;&amp;1
+
+    if [ $? -ne 0 ];then
+        stat=&quot;stopped&quot;
+    fi
+
+    echo &quot;{ \&quot;status\&quot; : \&quot;$stat\&quot; }&quot;
+    return $?
+}
+</code></pre>
+
+<p>可以看到脚本语法是<code>/bin/sh</code>，包含了安装、卸载、启动、停止这几个函数，非常简单，学习一下sh语法即可。</p>
+<h2 id="_3">发布到插件市场</h2>
+<p>把脚本拷贝到路由器中，可以手动安装，进行开发调试。</p>
+<pre><code>git clone git://git.coding.net/openwrtio/super-developer-for-hiwifi-os.git
+cd super-developer-for-hiwifi-os
+tar -zcvf tmp.tgz ./*
+scp tmp.tgz root@192.168.199.1:/tmp/
+ssh root@192.168.199.1
+cd /tmp/
+tar -zxvf tmp.tgz
+(. ./script; install)
+</code></pre>
+
+<p>如果开发测试完成，如何提供给大家方便的安装？极路由做了插件市场，注册一个开发者帐号（<a href="https://open.hiwifi.com/">https://open.hiwifi.com/</a>），申请一个应用，把插件打包上传，即可在插件市场里安装（<a href="https://app.hiwifi.com/">https://app.hiwifi.com/</a>）。可通过“路由器后台”——》“云插件”进入市场，尚未发布时，在“我开发的”页面里安装。如果提交审核上线，用户就能看到了。</p>
+<p><img alt="极路由 开放平台 应用列表" src="../../img/gee-open-platform-myapp.png" />
+<img alt="极路由 开放平台 应用 版本历史" src="../../img/gee-open-platform-myapp-version.png" />
+<img alt="极路由 路由器管理后台" src="../../img/gee-local-web-admin.png" />
+<img alt="极路由 云插件 我开发的" src="../../img/gee-appstore-myapp.png" />
+<img alt="极路由 云插件 安装" src="../../img/gee-appstore-myapp-install.png" /></p>
+<h2 id="_4">带网页配置界面的插件</h2>
+<p>上面的插件实现了打开root ssh，端口默认是22，没有让用户输入。如果用户想安装时指定端口，以后随时可以修改端口，怎么办？那就需要网页配置界面了。</p>
+<p>请看这个项目：内网分发（<a href="https://coding.net/u/openwrtio/p/lan-distribution-for-gee/git">https://coding.net/u/openwrtio/p/lan-distribution-for-gee/git</a>），在极路由开放平台申请了应用，英文名为lan-distribution，做网页配置界面需要增加两个文件：<code>manifest.json</code>和以插件英文名命名的配置文件，比如<code>lan-distribution.conf</code>。</p>
+<p><img alt="极路由 内网分发 基本资料" src="../../img/gee-open-platform-lan-distribution-detail.png" /></p>
+<p><code>manifest.json</code>定义网页界面，代码节选如下：</p>
+<pre><code>{
+    &quot;manifest_version&quot;: &quot;2.0.0&quot;,
+    &quot;configuration&quot;: [
+        {
+            &quot;name&quot;: &quot;文件下载链接&quot;,
+            &quot;type&quot;: &quot;text&quot;,
+            &quot;variable&quot;: &quot;fileuri&quot;,
+            &quot;defaultvalue&quot;: &quot;&quot;,
+            &quot;required&quot;: 1,
+            &quot;description&quot;: &quot;会保存到路由器中，离线可用。由于路由器不支持https，请填入http&quot;
+        },
+        {
+            &quot;name&quot;: &quot;下载后跳转上网&quot;,
+            &quot;type&quot;: &quot;radio&quot;,
+            &quot;variable&quot;: &quot;redirectafterdownload&quot;,
+            &quot;choices&quot;: &quot;是=1;否=0&quot;,
+            &quot;defaultvalue&quot;: &quot;1&quot;,
+            &quot;required&quot;: 1,
+            &quot;description&quot;: &quot;如果路由器接入了外网，建议开启此项&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>极路由插件的网页配置支持这几种数据类型：text、textfile、radio、selection、checkbox，分别表示单行文本、多行文本、单选框、下拉菜单、多选框，具体说明请看官方文档：<a href="https://open.hiwifi.com/open.php?m=doc&amp;a=index#dev_wiki">https://open.hiwifi.com/open.php?m=doc&amp;a=index#dev_wiki</a>。</p>
+<p>每段输入都有个"variable"字段，在网页中输入的内容会被赋值给这些变量（<strong>注意：极路由variable变量不能使用下划线</strong>）。<code>script</code>脚本执行install时如何获取这些值？那就需要app配置文件了，比如这个app的是<code>lan-distribution.conf</code>，代码如下：</p>
+<pre><code>file_uri={$fileuri}
+redirect_after_download={$redirectafterdownload}
+</code></pre>
+
+<p>网页安装时，右边的变量会被自动替换。然后在<code>script</code>脚本中导入即可，代码如下：</p>
+<pre><code>#!/bin/sh
+install() {
+    # web安装界面的参数会保存到文件，这里引用参数文件，即可使用变量
+    . ./lan-distribution.conf
+
+    wget -O /tmp/data/test &quot;$file_uri&quot;
+    if [ $? -ne 0 ]; then
+        echo &quot;&lt;User-Echo&gt;下载失败&quot;
+        exit 1
+    fi
+}
+</code></pre>
+
+<p>打包，上传到极路由插件市场，安装，界面如下图：</p>
+<p><img alt="极路由 安装插件 内网分发" src="../../img/gee-install-app-lan-distribution.png" />
+<img alt="极路由 安装插件 内网分发 网页配置" src="../../img/gee-install-app-lan-distribution-web-config.png" /></p>
+<h2 id="opkg">自定义opkg软件仓库的插件</h2>
+<p>在刚才的<code>script</code>文件中，还会看到这些代码：</p>
+<pre><code>install() {
+    set_opkg_src
+    opkg update
+
+    opkg install nodogsplash
+}
+
+get_arch() {
+    opkg print-architecture | grep &quot;ralink&quot; &gt;/dev/null
+    if [ $? -eq 0 ]; then
+        echo &quot;ralink&quot;
+        return 0
+    fi
+    opkg print-architecture | grep &quot;ar71xx&quot; &gt;/dev/null
+    if [ $? -eq 0 ]; then
+        echo &quot;ar71xx&quot;
+        return 0
+    fi
+    echo &quot;&lt;User-Echo&gt;get arch失败&quot;
+    exit 1
+}
+
+set_opkg_src() {
+    echo &quot;set_opkg_src start&quot;
+    arch=`get_arch`
+    tmp=$(grep 'src/gz openwrtio ' /etc/opkg.conf)
+    if [ $? -eq 0 ]; then
+        return 0
+    fi
+    openwrtio_src='http://dl.openwrt.io/vendors/gee/'$arch'/packages'
+    #gee use /etc/opkg.conf and /etc/opkg.d/*.conf
+    echo 'src/gz openwrtio '$openwrtio_src &gt;&gt; /etc/opkg.conf
+    for one_file in $(find /etc/opkg.d/ -iname '*.conf'); do
+        echo 'src/gz openwrtio '$openwrtio_src &gt;&gt; $one_file
+    done
+    echo &quot;set_opkg_src end&quot;
+    return 0
+}
+</code></pre>
+
+<p>可以看出这段代码添加了opkg软件仓库，然后安装了nodogsplash这个软件，这是因为极路由官方仓库里没有这个软件（也没有地方给大家提交软件），开发者就需要从别的地方安装。极路由有多个架构（ar71xx、ralink和mediatek），所以代码里先判断架构，然后添加不同的源（源列表在以前的文档里：<a href="../../docs/opkg/#gee-ralink-opkg-j1s-j2-j3">《opkg软件源》</a>）。</p>
+<p>可以看出极路由云插件是对opkg的再封装，提供了一个远程网页安装和配置界面，很方便。是一大创新，和luci本地网页界面的需求不同。</p>
+<h2 id="_5">练习题</h2>
+<p>尝试为“超级开发者”做一个网页配置界面，实现修改端口的功能。</p>
+<div id="comments" data-thread-key="docs-create-gee-app"></div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a title="帮助我们：点击注册七牛，本站将获得流量供大家下载使用" href="https://portal.qiniu.com/signup?code=3lafkpsz7yes1" target="_blank"><img src="https://developer.qiniu.com/assets/qiniu-transparent-9c01479a982463fdafe1c97a0254a99140eea97dcc6891489b5752a557b0212f.png" alt="七牛云" /></a><a rel="nofollow" href="http://www.miitbeian.gov.cn/">苏ICP备15020382号-1</a> <script type="text/javascript"> window.zhuge = window.zhuge || [];window.zhuge.methods = "_init debug identify track trackLink trackForm page".split(" "); window.zhuge.factory = function(b) {return function() {var a = Array.prototype.slice.call(arguments);a.unshift(b); window.zhuge.push(a);return window.zhuge;}};for (var i = 0; i < window.zhuge.methods.length; i++) { var key = window.zhuge.methods[i];window.zhuge[key] = window.zhuge.factory(key);}window.zhuge.load = function(b, x) { if (!document.getElementById("zhuge-js")) {var a = document.createElement("script");var verDate = new Date(); var verStr = verDate.getFullYear().toString()+ verDate.getMonth().toString() + verDate.getDate().toString(); a.type = "text/javascript";a.id = "zhuge-js";a.async = !0; a.src = "//zgsdk.zhugeio.com/zhuge.min.js?v=" + verStr; a.onerror = function(){window.zhuge.identify = window.zhuge.track = function(ename, props, callback){if(callback && Object.prototype.toString.call(callback) === '[object Function]')callback();};}; var c = document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a, c);window.zhuge._init(b, x)}}; window.zhuge.load('f6a2e8eed9e447ea89a63b87763ec7df');//配置应用的AppKey </script></p>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

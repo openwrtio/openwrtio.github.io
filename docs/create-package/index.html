@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://openwrt.io/docs/create-package/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>开发package - OpenWrt.io</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-63908544-1', 'openwrt.io');
+            ga('send', 'pageview');
+        </script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">OpenWrt.io</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">首页</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Openwrt文档 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../beginners-guide/">新手指南</a>
+</li>
+                            
+<li >
+    <a href="../supported-devices/">支持的硬件</a>
+</li>
+                            
+<li >
+    <a href="../developer-guide/">开发者指南</a>
+</li>
+                            
+<li >
+    <a href="../opkg/">opkg软件源</a>
+</li>
+                            
+<li >
+    <a href="../build-a-single-package/">编译package</a>
+</li>
+                            
+<li >
+    <a href="../smart-vpn/">智能VPN</a>
+</li>
+                            
+<li >
+    <a href="../flashing/">刷机</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository/">搭建opkg软件仓库</a>
+</li>
+                            
+<li >
+    <a href="../build-firmware/">编译固件</a>
+</li>
+                            
+<li class="active">
+    <a href="./">开发package</a>
+</li>
+                            
+<li >
+    <a href="../build-openwrt-package-using-docker/">docker编译package</a>
+</li>
+                            
+<li >
+    <a href="../create-opkg-package-repository-using-docker-ci/">docker CI搭建opkg源</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">云插件 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../create-gee-app/">开发极路由云插件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">厂商 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../gee/">极路由</a>
+</li>
+                            
+<li >
+    <a href="../youku/">优酷路由宝</a>
+</li>
+                            
+<li >
+    <a href="../miwifi/">小米路由</a>
+</li>
+                            
+<li >
+    <a href="../modou/">魔豆</a>
+</li>
+                            
+<li >
+    <a href="../netgear/">网件</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../downloads/">下载</a>
+                    </li>
+                    <li >
+                        <a href="../../about/">关于我们</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../build-firmware/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../build-openwrt-package-using-docker/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/openwrtio/openwrtio.github.io/edit/mkdocs/docs/docs/create-package.md">Edit on Github</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#package">开发package软件包</a></li>
+            <li><a href="#_1">目录结构</a></li>
+            <li><a href="#_2">软件包变量</a></li>
+            <li><a href="#_3">宏定义</a></li>
+            <li><a href="#_4">业务代码</a></li>
+            <li><a href="#_5">发布</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="package">开发package软件包</h1>
+<p>在开发智能路由器的过程中，如果有一个新需求，那先去google一下，到openwrt官方仓库里找一找package，如果没有的话，再自己开发一个。避免重新发明轮子。</p>
+<p>比如商业wifi（广告wifi）需要的上网欢迎页，已经有nodogsplash实现了；上网欢迎页加上认证计费，有wifidog实现了。</p>
+<p>远程云管理方面，有autossh实现了实时ssh管理（可少量调试使用，服务器负载高，无法承受数百台路由器）；有TR-069 cwmp协议的软件（比如easycwmp、freecwmp）实现了定时管理（但用的是XML格式，已淘汰，配套开发维护服务端的成本较高）。</p>
+<h2 id="_1">目录结构</h2>
+<p>如果确定市面上的软件无法满足需求，需要自己开发的话，也很简单。在<code>package</code>目录中有很多软件，看一看，会发现包格式如下：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>是否必须</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>package/Makefile</td>
+<td>是</td>
+<td>定义了软件名称、版本、编译、安装等指令</td>
+</tr>
+<tr>
+<td>package/files/</td>
+<td>否</td>
+<td>启动脚本、配置文件等</td>
+</tr>
+<tr>
+<td>package/patches/</td>
+<td>否</td>
+<td>代码的补丁</td>
+</tr>
+</tbody>
+</table>
+<p>以wifidog为例（package在<a href="https://coding.net/u/openwrtio/p/packages/git/tree/for-12.09/net/wifidog">https://coding.net/u/openwrtio/p/packages/git/tree/for-12.09/net/wifidog</a>），<code>Makefile</code>内容如下：</p>
+<pre><code>include $(TOPDIR)/rules.mk
+
+PKG_NAME:=wifidog
+PKG_VERSION:=1.2.1
+PKG_RELEASE=2
+
+PKG_LICENSE:=GPL-2.0
+PKG_MAINTAINER:=sinkcup &lt;sinkcup@163.com&gt;
+
+PKG_SOURCE_VERSION=$(PKG_VERSION)
+PKG_SOURCE:=$(PKG_NAME)-gateway-$(PKG_SOURCE_VERSION).tar.gz
+PKG_SOURCE_URL:=http://dl.openwrt.io/sources/ \
+    https://github.com/wifidog/wifidog-gateway/releases/download/$(PKG_SOURCE_VERSION)/
+PKG_MD5SUM:=3c9c35968f154b1c9224245a5d708d5f
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-gateway-$(PKG_SOURCE_VERSION)
+
+PKG_FIXUP:=autoreconf
+PKG_INSTALL:=0
+
+include $(INCLUDE_DIR)/package.mk
+
+define Package/wifidog
+  SUBMENU:=Captive Portals
+  SECTION:=net
+  CATEGORY:=Network
+  DEPENDS:=+iptables-mod-extra +iptables-mod-ipopt +kmod-ipt-nat +iptables-mod-nat-extra +libpthread
+  TITLE:=A wireless captive portal solution
+  URL:=http://www.wifidog.org
+endef
+
+define Package/wifidog/description
+    The Wifidog project is a complete and embeddable captive
+    portal solution for wireless community groups or individuals
+    who wish to open a free Hotspot while still preventing abuse
+    of their Internet connection.
+endef
+
+define Package/wifidog/conffiles
+/etc/wifidog.conf
+endef
+
+define Package/wifidog/install
+    $(INSTALL_DIR) $(1)/usr/bin
+    $(INSTALL_BIN) $(PKG_BUILD_DIR)/scripts/init.d/wifidog $(1)/usr/bin/wifidog-init
+    $(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/wifidog $(1)/usr/bin/
+    $(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/wdctl $(1)/usr/bin/
+    $(INSTALL_DIR) $(1)/usr/lib
+    $(CP) $(PKG_INSTALL_DIR)/usr/lib/libhttpd.so* $(1)/usr/lib/
+    $(INSTALL_DIR) $(1)/etc
+    $(INSTALL_DATA) $(PKG_BUILD_DIR)/wifidog.conf $(1)/etc/
+    $(INSTALL_DATA) $(PKG_BUILD_DIR)/wifidog-msg.html $(1)/etc/
+    $(INSTALL_DIR) $(1)/etc/init.d
+    $(INSTALL_BIN) ./files/wifidog.init $(1)/etc/init.d/wifidog
+endef
+
+$(eval $(call BuildPackage,wifidog))
+</code></pre>
+
+<h2 id="_2">软件包变量</h2>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>是否必须</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PKG_VERSION</td>
+<td>是</td>
+<td>包版本，一般与代码版本一致，建议使用<a href="http://semver.org/lang/zh-CN/">语义化版本号</a></td>
+</tr>
+<tr>
+<td>PKG_RELEASE</td>
+<td>是</td>
+<td>第几次打包。比如版本没变，第一次打包，PKG_RELEASE为1，发布了<code>wifidog_1.2.1-1_ralink.ipk</code>，然后发现配置文件不佳，进行第二次打包，PKG_RELEASE需改为2，会生成<code>wifidog_1.2.1-2_ralink.ipk</code>。</td>
+</tr>
+<tr>
+<td>PKG_SOURCE_VERSION</td>
+<td>否</td>
+<td>代码版本，比如使用git的tag，建议使用语义化版本号。无压缩包，而从git clone时，使用commit id。</td>
+</tr>
+<tr>
+<td>PKG_SOURCE</td>
+<td>是</td>
+<td>代码文件名，下载完毕会保存到<code>dl</code>目录。</td>
+</tr>
+<tr>
+<td>PKG_SOURCE_URL</td>
+<td>是</td>
+<td>代码下载链接的目录（下载时会自动加上PKG_SOURCE文件名），支持多个镜像，每行一个</td>
+</tr>
+<tr>
+<td>PKG_BUILD_DIR</td>
+<td>是</td>
+<td>编译软件包的目录</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到wifidog的代码文件名是<code>wifidog-gateway-1.2.1.tar.gz</code>，下载路径有2个：</p>
+<ul>
+<li>http://dl.openwrt.io/sources/</li>
+<li>https://github.com/wifidog/wifidog-gateway/releases/download/1.2.1/</li>
+</ul>
+<p>拼成完整的下载链接就是：</p>
+<ul>
+<li><a href="http://dl.openwrt.io/sources/wifidog-gateway-1.2.1.tar.gz">http://dl.openwrt.io/sources/wifidog-gateway-1.2.1.tar.gz</a></li>
+<li><a href="https://github.com/wifidog/wifidog-gateway/releases/download/1.2.1/wifidog-gateway-1.2.1.tar.gz">https://github.com/wifidog/wifidog-gateway/releases/download/1.2.1/wifidog-gateway-1.2.1.tar.gz</a></li>
+</ul>
+<p>下载之后，解压缩，会发现子目录是<code>wifidog-gateway-1.2.1</code>，如图：</p>
+<p><img alt="archive-wifidog-gateway-1.2.1" src="../../img/archive-wifidog-gateway-1.2.1.png" /></p>
+<p>所以PKG_BUILD_DIR要设置正确，才能顺利编译。</p>
+<h2 id="_3">宏定义</h2>
+<h3 id="packagepkg_name">Package/$(PKG_NAME)</h3>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>是否必须</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CATEGORY</td>
+<td>是</td>
+<td>一级分类</td>
+</tr>
+<tr>
+<td>SUBMENU</td>
+<td>否</td>
+<td>二级分类</td>
+</tr>
+<tr>
+<td>DEPENDS</td>
+<td>否</td>
+<td>依赖。加号“+”表示自动选中此依赖，比较常用。</td>
+</tr>
+<tr>
+<td>TITLE</td>
+<td>否</td>
+<td>简介</td>
+</tr>
+</tbody>
+</table>
+<h3 id="packagepkg_nameconffiles">Package/$(PKG_NAME)/conffiles （可选）</h3>
+<p>配置文件列表。安装时，如果配置文件已存在，则不会被覆盖。卸载时，如果配置文件被修改过，则不会被删除。</p>
+<h3 id="packagepkg_nameinstall">Package/$(PKG_NAME)/install （可选）</h3>
+<p>安装指令。比如拷贝一些文件。常用的有：INSTALL_DIR、INSTALL_BIN、INSTALL_DATA、CP。</p>
+<h2 id="_4">业务代码</h2>
+<p>可以看到package里面只是打包ipk所用的启动脚本、配置文件等，没有业务代码。业务代码在网上，通过PKG_SOURCE_URL指定下载链接，编译时自动下载。因为代码是单独的项目，比如dnsmasq、wifidog，是C、C++、shell等语言开发的，一般都是跨平台的，电脑、手机、路由器都能用，有独立的项目网址，所以不会放在package里。</p>
+<p>所以想实现一个需求，首先要做的是开发业务代码。比如wifidog的业务代码在：<a href="https://github.com/wifidog/wifidog-gateway">https://github.com/wifidog/wifidog-gateway</a>，是开源项目，大家一起写代码，合并进去即可。</p>
+<p>如果已有的项目不能满足需求，那就需要自行开发新项目。比如owmp，</p>
+<ul>
+<li>业务代码在：<a href="https://coding.net/u/openwrtio/p/owmp/git/tree/0.4.0/">https://coding.net/u/openwrtio/p/owmp/git/tree/0.4.0/</a>，只有一个shell文件和一个<code>Makefile</code>。</li>
+<li>package在：<a href="https://coding.net/u/openwrtio/p/packages/git/tree/for-12.09/admin/owmp">https://coding.net/u/openwrtio/p/packages/git/tree/for-12.09/admin/owmp</a></li>
+</ul>
+<h2 id="_5">发布</h2>
+<p>开发完毕，编译打包生成ipk，发布到opkg软件仓库里即可。请按照之前的文档<a href="../../docs/create-opkg-package-repository/">《搭建opkg软件仓库》</a>进行操作。</p>
+<div id="comments" data-thread-key="docs-create-package"></div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p><a title="帮助我们：点击注册七牛，本站将获得流量供大家下载使用" href="https://portal.qiniu.com/signup?code=3lafkpsz7yes1" target="_blank"><img src="https://developer.qiniu.com/assets/qiniu-transparent-9c01479a982463fdafe1c97a0254a99140eea97dcc6891489b5752a557b0212f.png" alt="七牛云" /></a><a rel="nofollow" href="http://www.miitbeian.gov.cn/">苏ICP备15020382号-1</a> <script type="text/javascript"> window.zhuge = window.zhuge || [];window.zhuge.methods = "_init debug identify track trackLink trackForm page".split(" "); window.zhuge.factory = function(b) {return function() {var a = Array.prototype.slice.call(arguments);a.unshift(b); window.zhuge.push(a);return window.zhuge;}};for (var i = 0; i < window.zhuge.methods.length; i++) { var key = window.zhuge.methods[i];window.zhuge[key] = window.zhuge.factory(key);}window.zhuge.load = function(b, x) { if (!document.getElementById("zhuge-js")) {var a = document.createElement("script");var verDate = new Date(); var verStr = verDate.getFullYear().toString()+ verDate.getMonth().toString() + verDate.getDate().toString(); a.type = "text/javascript";a.id = "zhuge-js";a.async = !0; a.src = "//zgsdk.zhugeio.com/zhuge.min.js?v=" + verStr; a.onerror = function(){window.zhuge.identify = window.zhuge.track = function(ename, props, callback){if(callback && Object.prototype.toString.call(callback) === '[object Function]')callback();};}; var c = document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a, c);window.zhuge._init(b, x)}}; window.zhuge.load('f6a2e8eed9e447ea89a63b87763ec7df');//配置应用的AppKey </script></p>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
